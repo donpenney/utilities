@@ -31,21 +31,12 @@ function get_container_state {
 
 function get_current_revision {
     local name=$1
-    oc get "${name}" -o=jsonpath='{.items[0].status.nodeStatuses[0].currentRevision}{"\n"}'
+    oc get "${name}" -o=jsonpath='{.items[0].status.nodeStatuses[0].currentRevision}{"\n"}' 2>/dev/null
 }
 
 function get_latest_available_revision {
     local name=$1
-    oc get "${name}" -o=jsonpath='{.items[0].status.latestAvailableRevision}{"\n"}'
-}
-
-function trigger_new_revision {
-    local name=$1
-    oc patch "${name}" cluster -p='{"spec": {"forceRedeploymentReason": "recovery-'"$( date --rfc-3339=ns )"'"}}' --type=merge
-    if [ $? -ne 0 ]; then
-        echo "Failed to patch ${name}. Please investigate" >&2
-        exit 1
-    fi
+    oc get "${name}" -o=jsonpath='{.items[0].status.latestAvailableRevision}{"\n"}' 2>/dev/null
 }
 
 function wait_for_container_restart {
@@ -79,10 +70,62 @@ function wait_for_container_restart {
     echo "##### $(date -u): ${name} container restarted"
 }
 
+function trigger_redeployment {
+    local name=$1
+    local timeout=
+    timeout=$((SECONDS+$2))
+
+    local starting_rev=
+    local starting_latest_rev=
+    local cur_rev=
+    local expected_rev=
+
+    echo "#### $(date -u): Triggering ${name} redeployment"
+
+    starting_rev=$(get_current_revision "${name}")
+    starting_latest_rev=$(get_latest_available_revision "${name}")
+    if [ -z "${starting_rev}" ] || [ -z "${starting_latest_rev}" ]; then
+        echo "Failed to get info for ${name}"
+        exit 1
+    fi
+
+    expected_rev=$((starting_latest_rev+1))
+
+    echo "Patching ${name}. Starting rev is ${starting_rev}. Expected new rev is ${expected_rev}."
+    oc patch "${name}" cluster -p='{"spec": {"forceRedeploymentReason": "recovery-'"$( date --rfc-3339=ns )"'"}}' --type=merge
+    if [ $? -ne 0 ]; then
+        echo "Failed to patch ${name}. Please investigate" >&2
+        exit 1
+    fi
+
+    while [ $SECONDS -lt $timeout ]; do
+        cur_rev=$(get_current_revision "${name}")
+        if [ -z "${cur_rev}" ]; then
+            echo -n "."; sleep 10
+            continue # intermittent API failure
+        fi
+
+        if [[ ${cur_rev} == ${expected_rev} ]]; then
+            echo -e "\n${name} redeployed successfully"
+            break
+        fi
+        echo -n "."; sleep 10
+    done
+
+    cur_rev=$(get_current_revision "${name}")
+    if [[ ${cur_rev} != ${expected_rev} ]]; then
+        echo "Failed to redeploy ${name}. Please investigate" >&2
+        exit 1
+    fi
+
+    echo "#### $(date -u): Completed ${name} redeployment"
+}
+
 declare BU_DIR_CLUSTER=
 declare BU_DIR_CONTAINER=
 declare BU_DIR_ETC=
 declare RESTART_TIMEOUT=900 # 15 minutes
+declare REDEPLOYMENT_TIMEOUT=900 # 15 minutes
 
 LONGOPTS="cluster-backup:,container-backup:,etc-backup:"
 OPTS=$(getopt -o h --long "${LONGOPTS}" --name "$0" -- "$@")
@@ -211,39 +254,13 @@ waiting_for_container_restart kube-scheduler-operator-container "${ORIG_KUBE_SCH
 echo "##### $(date -u): Required containers have restarted"
 
 echo "##### $(date -u): Triggering redeployments"
-redeployments="etcd kubeapiserver kubecontrollermanager kubescheduler"=
-time for name in ${redeployments}; do
-    starting_rev=$(get_current_revision "${name}")
-    starting_latest_rev=$(get_latest_available_revision "${name}")
-    if [ -z "${starting_rev}" ] || [ -z "${starting_latest_rev}" ]; then
-        echo "Failed to get info for ${name}"
-        break
-    fi
 
-    expected_rev=$((starting_latest_rev+1))
+trigger_redeployment etcd ${REDEPLOYMENT_TIMEOUT}
+trigger_redeployment kubeapiserver${REDEPLOYMENT_TIMEOUT}
+trigger_redeployment kubecontrollermanager${REDEPLOYMENT_TIMEOUT}
+trigger_redeployment kubescheduler${REDEPLOYMENT_TIMEOUT}
 
-    echo "Patching ${name}. Starting rev is ${starting_rev}. Expected new rev is ${expected_rev}."
-    trigger_new_revision "${name}"
+echo "##### $(date -u): Redeployments complete"
 
-    TIMEOUT=$((SECONDS+1800)) # 15 minutes
-    while [ $SECONDS -lt $TIMEOUT ]; do
-        cur_rev=$(get_current_revision "${name}")
-        if [ -z "${cur_rev}" ]; then
-            echo -n "."; sleep 10
-            continue # intermittent API failure
-        fi
-
-        if [[ ${cur_rev} == ${expected_rev} ]]; then
-            echo -e "\n${name} redeployed successfully"
-            break
-        fi
-        echo -n "."; sleep 10
-    done
-
-    cur_rev=$(get_current_revision "${name}")
-    if [[ ${cur_rev} != ${expected_rev} ]]; then
-        echo "Failed to redeploy ${name}. Please investigate" >&2
-        exit 1
-    fi
-done
+echo "##### $(date -u): Recovery complete"
 
