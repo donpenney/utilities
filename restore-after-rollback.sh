@@ -48,9 +48,41 @@ function trigger_new_revision {
     fi
 }
 
+function wait_for_container_restart {
+    local name=$1
+    local orig_id=$2
+    local timeout=
+    timeout=$((SECONDS+$3))
+
+    local cur_id=
+    local cur_state=
+
+    echo "##### $(date -u): Waiting for ${name} container to restart"
+
+    while [ ${SECONDS} -lt ${timeout} ]; do
+        cur_id=$(get_container_id "${name}")
+        cur_state=$(get_container_state "${name}")
+        if [ -n "${cur_id}" ] && \
+                [ "${cur_id}" != "${orig_id}" ] && \
+                [ "${cur_state}" = "Running" ]; then
+            break
+        fi
+        echo -n "." && sleep 10
+    done
+
+    if [ "$(get_container_state ${name})" != "Running" ]; then
+        echo -e "\n$(date -u): ${name} container is not Running. Please investigate" >&2
+        exit 1
+    fi
+
+    echo -e "\n${name} is running"
+    echo "##### $(date -u): ${name} container restarted"
+}
+
 declare BU_DIR_CLUSTER=
 declare BU_DIR_CONTAINER=
 declare BU_DIR_ETC=
+declare RESTART_TIMEOUT=900 # 15 minutes
 
 LONGOPTS="cluster-backup:,container-backup:,etc-backup:"
 OPTS=$(getopt -o h --long "${LONGOPTS}" --name "$0" -- "$@")
@@ -119,6 +151,24 @@ if [ -z "${ORIG_ETCD_OPERATOR_CONTAINER_ID}" ]; then
     exit 1
 fi
 
+ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID=$(get_container_id kube-apiserver-operator)
+if [ -z "${ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID}" ]; then
+    echo "Failed to get kube-apiserver-operator container id" >&2
+    exit 1
+fi
+
+ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID=$(get_container_id kube-controller-manager-operator)
+if [ -z "${ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID}" ]; then
+    echo "Failed to get kube-controller-manager-operator container id" >&2
+    exit 1
+fi
+
+ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID=$(get_container_id kube-scheduler-operator-container)
+if [ -z "${ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID}" ]; then
+    echo "Failed to get kube-scheduler-operator-container container id" >&2
+    exit 1
+fi
+
 # Restore container images
 echo "##### $(date -u): Restoring container images"
 for id in $(find ${BU_DIR_CONTAINER} -mindepth 1 -maxdepth 2 -type d); do
@@ -150,47 +200,18 @@ time systemctl restart kubelet.service
 echo "##### $(date -u): Restarting crio.service"
 time systemctl restart crio.service
 
-echo "##### $(date -u): Waiting for etcd container to restart"
-TIMEOUT=$((SECONDS+900))
-while [ ${SECONDS} -lt ${TIMEOUT} ]; do
-    cur_id=$(get_container_id etcd)
-    cur_state=$(get_container_state etcd)
-    if [ -n "${cur_id}" ] && [ "${cur_id}" != "${ORIG_ETCD_CONTAINER_ID}" ] && [ "${cur_state}" = "Running" ]; then
-        break
-    fi
-done
+echo "##### $(date -u): Waiting for required container restarts"
 
-if [ "$(get_container_state etcd)" != "Running" ]; then
-    echo "etcd container is not Running. Please investigate" >&2
-    exit 1
-fi
-echo "##### $(date -u): etcd container restarted"
+waiting_for_container_restart etcd "${ORIG_ETCD_CONTAINER_ID}" ${RESTART_TIMEOUT}
+waiting_for_container_restart etcd-operator "${ORIG_ETCD_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+waiting_for_container_restart kube-apiserver-operator "${ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+waiting_for_container_restart kube-controller-manager-operator "${ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+waiting_for_container_restart kube-scheduler-operator-container "${ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
 
-echo "##### $(date -u): Waiting for required operators to restart"
-
-required_operators="etcd-operator kube-apiserver-operator kube-controller-manager-operator kube-scheduler-operator-container"
-TIMEOUT=$((SECONDS+3600)) # Wait up to an hour total
-time for name in ${required_operators}; do
-    echo -n "Checking ${name}..."
-    while  [ $SECONDS -lt $TIMEOUT ]; do
-        cur_state=$(get_container_state "${name}")
-        if [ "${cur_state}" = "Running" ]; then
-            echo -e "\n${name} is running"
-            break
-        fi
-        echo -n "." && sleep 10
-    done
-
-    cur_state=$(get_container_state "${name}")
-    if [ "${cur_state}" != "Running" ]; then
-        echo -e "\n${name} is not running. Please investigate further."
-    fi
-done
-
-echo "##### $(date -u): Required operators have restarted"
+echo "##### $(date -u): Required containers have restarted"
 
 echo "##### $(date -u): Triggering redeployments"
-redeployments="etcd kubeapiserver kubecontrollermanager kubescheduler"
+redeployments="etcd kubeapiserver kubecontrollermanager kubescheduler"=
 time for name in ${redeployments}; do
     starting_rev=$(get_current_revision "${name}")
     starting_latest_rev=$(get_latest_available_revision "${name}")
