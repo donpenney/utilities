@@ -256,9 +256,9 @@ echo "##### $(date -u): Required containers have restarted"
 echo "##### $(date -u): Triggering redeployments"
 
 trigger_redeployment etcd ${REDEPLOYMENT_TIMEOUT}
-trigger_redeployment kubeapiserver${REDEPLOYMENT_TIMEOUT}
-trigger_redeployment kubecontrollermanager${REDEPLOYMENT_TIMEOUT}
-trigger_redeployment kubescheduler${REDEPLOYMENT_TIMEOUT}
+trigger_redeployment kubeapiserver ${REDEPLOYMENT_TIMEOUT}
+trigger_redeployment kubecontrollermanager ${REDEPLOYMENT_TIMEOUT}
+trigger_redeployment kubescheduler ${REDEPLOYMENT_TIMEOUT}
 
 echo "##### $(date -u): Redeployments complete"
 
