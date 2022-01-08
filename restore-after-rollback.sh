@@ -214,14 +214,14 @@ fi
 
 # Restore container images
 echo "##### $(date -u): Restoring container images"
-for id in $(find ${BU_DIR_CONTAINER} -mindepth 1 -maxdepth 2 -type d); do
+time for id in $(find ${BU_DIR_CONTAINER} -mindepth 1 -maxdepth 2 -type d); do
     /usr/bin/skopeo copy dir:$id containers-storage:local/$(basename $id)
 done
 echo "##### $(date -u): Completed restoring container images"
 
 # Restore /etc content
 echo "##### $(date -u): Restoring /etc content"
-rsync -avc --delete --no-t --exclude-from ${BU_DIR_ETC}/etc.exclude.list ${BU_DIR_ETC}/etc/ /etc/
+time rsync -avc --delete --no-t --exclude-from ${BU_DIR_ETC}/etc.exclude.list ${BU_DIR_ETC}/etc/ /etc/
 if [ $? -ne 0 ]; then
     echo "$(date -u): Failed to restore /etc content" >&2
     exit 1
