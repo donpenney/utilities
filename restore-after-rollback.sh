@@ -212,6 +212,10 @@ if [ -z "${ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID}" ]; then
     exit 1
 fi
 
+echo "##### $(date -u): Pausing machine config"
+oc patch --type=merge --patch='{"spec":{"paused":true}}' machineconfigpool/master
+oc patch --type=merge --patch='{"spec":{"paused":true}}' machineconfigpool/worker
+
 # Restore container images
 echo "##### $(date -u): Restoring container images"
 time for id in $(find ${BU_DIR_CONTAINER} -mindepth 1 -maxdepth 2 -type d); do
