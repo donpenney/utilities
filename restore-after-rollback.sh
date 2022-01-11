@@ -162,6 +162,7 @@ while :; do
             ;;
         --force)
             SKIP_DEPLOY_CHECK="yes"
+            shift
             ;;
         --)
             shift
