@@ -14,9 +14,17 @@ Options:
     --container-backup <dir>
     --cluster-backup <dir>
     --etc-backup <dir>
-    --force
+    --force:                  Skip ostree deployment check
 ENDUSAGE
     exit 1
+}
+
+function display_current_status {
+    echo "##### $(date -u): Displaying current status"
+
+    echo "##### $(date -u): oc adm upgrade && oc get co && oc get nodes -o wide && oc get mcp"
+    oc adm upgrade && oc get co && oc get nodes -o wide && oc get mcp
+    echo "##### $(date -u): Done"
 }
 
 function get_container_id {
@@ -80,7 +88,7 @@ function trigger_redeployment {
     local cur_rev=
     local expected_rev=
 
-    echo "#### $(date -u): Triggering ${name} redeployment"
+    echo "##### $(date -u): Triggering ${name} redeployment"
 
     starting_rev=$(get_current_revision "${name}")
     starting_latest_rev=$(get_latest_available_revision "${name}")
@@ -118,7 +126,7 @@ function trigger_redeployment {
         exit 1
     fi
 
-    echo "#### $(date -u): Completed ${name} redeployment"
+    echo "##### $(date -u): Completed ${name} redeployment"
 }
 
 declare BU_DIR_CLUSTER=
@@ -126,8 +134,9 @@ declare BU_DIR_CONTAINER=
 declare BU_DIR_ETC=
 declare RESTART_TIMEOUT=900 # 15 minutes
 declare REDEPLOYMENT_TIMEOUT=900 # 15 minutes
+declare SKIP_DEPLOY_CHECK="no"
 
-LONGOPTS="cluster-backup:,container-backup:,etc-backup:"
+LONGOPTS="cluster-backup:,container-backup:,etc-backup:,force"
 OPTS=$(getopt -o h --long "${LONGOPTS}" --name "$0" -- "$@")
 
 if [ $? -ne 0 ]; then
@@ -151,6 +160,9 @@ while :; do
             BU_DIR_ETC=$2
             shift 2
             ;;
+        --force)
+            SKIP_DEPLOY_CHECK="yes"
+            ;;
         --)
             shift
             break
@@ -172,6 +184,15 @@ if [ -z "${BU_DIR_CLUSTER}" ] || [ ! -d "${BU_DIR_CLUSTER}" ] || \
         [ -z "${BU_DIR_ETC}" ] || [ ! -d "${BU_DIR_ETC}" ]; then
     echo "Please specify required directories with --cluster-backup, --container-backup, and --etc-backup options" >&2
     exit 1
+fi
+
+if ! ostree admin status | grep -A 3 '^\*' | grep -q 'Pinned: yes'; then
+    if [ "${SKIP_DEPLOY_CHECK}" = "yes" ]; then
+        echo "Warning: Active ostree deployment is not pinned and should be rolled back."
+    else
+        echo "Active ostree deployment is not pinned and should be rolled back." >&2
+        exit 1
+    fi
 fi
 
 # Check for current cluster version
@@ -212,6 +233,8 @@ if [ -z "${ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID}" ]; then
     exit 1
 fi
 
+display_current_status
+
 echo "##### $(date -u): Pausing machine config"
 oc patch --type=merge --patch='{"spec":{"paused":true}}' machineconfigpool/master
 oc patch --type=merge --patch='{"spec":{"paused":true}}' machineconfigpool/worker
@@ -249,22 +272,24 @@ time systemctl restart crio.service
 
 echo "##### $(date -u): Waiting for required container restarts"
 
-wait_for_container_restart etcd "${ORIG_ETCD_CONTAINER_ID}" ${RESTART_TIMEOUT}
-wait_for_container_restart etcd-operator "${ORIG_ETCD_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
-wait_for_container_restart kube-apiserver-operator "${ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
-wait_for_container_restart kube-controller-manager-operator "${ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
-wait_for_container_restart kube-scheduler-operator-container "${ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+time wait_for_container_restart etcd "${ORIG_ETCD_CONTAINER_ID}" ${RESTART_TIMEOUT}
+time wait_for_container_restart etcd-operator "${ORIG_ETCD_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+time wait_for_container_restart kube-apiserver-operator "${ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+time wait_for_container_restart kube-controller-manager-operator "${ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+time wait_for_container_restart kube-scheduler-operator-container "${ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
 
 echo "##### $(date -u): Required containers have restarted"
 
 echo "##### $(date -u): Triggering redeployments"
 
-trigger_redeployment etcd ${REDEPLOYMENT_TIMEOUT}
-trigger_redeployment kubeapiserver ${REDEPLOYMENT_TIMEOUT}
-trigger_redeployment kubecontrollermanager ${REDEPLOYMENT_TIMEOUT}
-trigger_redeployment kubescheduler ${REDEPLOYMENT_TIMEOUT}
+time trigger_redeployment etcd ${REDEPLOYMENT_TIMEOUT}
+time trigger_redeployment kubeapiserver ${REDEPLOYMENT_TIMEOUT}
+time trigger_redeployment kubecontrollermanager ${REDEPLOYMENT_TIMEOUT}
+time trigger_redeployment kubescheduler ${REDEPLOYMENT_TIMEOUT}
 
 echo "##### $(date -u): Redeployments complete"
 
 echo "##### $(date -u): Recovery complete"
+
+display_current_status
 
