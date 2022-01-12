@@ -129,14 +129,12 @@ function trigger_redeployment {
     echo "##### $(date -u): Completed ${name} redeployment"
 }
 
-declare BU_DIR_CLUSTER=
-declare BU_DIR_CONTAINER=
-declare BU_DIR_ETC=
+declare BACKUP_DIR="/var/recovery"
 declare RESTART_TIMEOUT=900 # 15 minutes
 declare REDEPLOYMENT_TIMEOUT=900 # 15 minutes
 declare SKIP_DEPLOY_CHECK="no"
 
-LONGOPTS="cluster-backup:,container-backup:,etc-backup:,force"
+LONGOPTS="dir:,force"
 OPTS=$(getopt -o h --long "${LONGOPTS}" --name "$0" -- "$@")
 
 if [ $? -ne 0 ]; then
@@ -148,16 +146,8 @@ eval set -- "${OPTS}"
 
 while :; do
     case "$1" in
-        --cluster-backup)
-            BU_DIR_CLUSTER=$2
-            shift 2
-            ;;
-        --container-backup)
-            BU_DIR_CONTAINER=$2
-            shift 2
-            ;;
-        --etc-backup)
-            BU_DIR_ETC=$2
+        --dir)
+            BACKUP_DIR=$2
             shift 2
             ;;
         --force)
@@ -180,10 +170,11 @@ if [ -z "${KUBECONFIG}" ] || [ ! -r "${KUBECONFIG}" ]; then
     exit 1
 fi
 
-if [ -z "${BU_DIR_CLUSTER}" ] || [ ! -d "${BU_DIR_CLUSTER}" ] || \
-        [ -z "${BU_DIR_CONTAINER}" ] || [ ! -d "${BU_DIR_CONTAINER}" ] || \
-        [ -z "${BU_DIR_ETC}" ] || [ ! -d "${BU_DIR_ETC}" ]; then
-    echo "Please specify required directories with --cluster-backup, --container-backup, and --etc-backup options" >&2
+if [ ! -d "${BACKUP_DIR}/cluster" ] || \
+        [ ! -d "${BACKUP_DIR}/containers" ] || \
+        [ ! -d "${BACKUP_DIR}/etc" ] || \
+        [ ! -d "${BACKUP_DIR}/usrlocal" ]; then
+    echo "Required backup content not found in ${BACKUP_DIR}" >&2
     exit 1
 fi
 
@@ -242,24 +233,44 @@ oc patch --type=merge --patch='{"spec":{"paused":true}}' machineconfigpool/worke
 
 # Restore container images
 echo "##### $(date -u): Restoring container images"
-time for id in $(find ${BU_DIR_CONTAINER} -mindepth 1 -maxdepth 2 -type d); do
+time for id in $(find ${BACKUP_DIR}/containers -mindepth 1 -maxdepth 2 -type d); do
     /usr/bin/skopeo copy dir:$id containers-storage:local/$(basename $id)
 done
 echo "##### $(date -u): Completed restoring container images"
 
+# Restore /usr/local content
+echo "##### $(date -u): Restoring /usr/local content"
+time rsync -avc --delete --no-t ${BACKUP_DIR}/usrlocal/ /usr/local/
+if [ $? -ne 0 ]; then
+    echo "$(date -u): Failed to restore /usr/local content" >&2
+    exit 1
+fi
+echo "##### $(date -u): Completed restoring /etc content"
+
 # Restore /etc content
 echo "##### $(date -u): Restoring /etc content"
-time rsync -avc --delete --no-t --exclude-from ${BU_DIR_ETC}/etc.exclude.list ${BU_DIR_ETC}/etc/ /etc/
+time rsync -avc --delete --no-t --exclude-from ${BACKUP_DIR}/etc.exclude.list ${BACKUP_DIR}/etc/ /etc/
 if [ $? -ne 0 ]; then
     echo "$(date -u): Failed to restore /etc content" >&2
     exit 1
 fi
-systemctl daemon-reload
 echo "##### $(date -u): Completed restoring /etc content"
+
+if [ -f ${BACKUP_DIR}/extras.tgz ]; then
+    echo "##### $(date -u): Restoring extra content"
+    tar xzf ${BACKUP_DIR}/extras.tgz -C /
+    if [ $? -ne 0 ]; then
+        echo "$(date -u): Failed to restore extra content" >&2
+        exit 1
+    fi
+    echo "##### $(date -u): Completed restoring extra content"
+fi
+
+systemctl daemon-reload
 
 # Restore cluster
 echo "##### $(date -u): Restoring cluster"
-time /usr/local/bin/cluster-restore.sh ${BU_DIR_CLUSTER}
+time /usr/local/bin/cluster-restore.sh ${BACKUP_DIR}/cluster
 if [ $? -ne 0 ]; then
     echo "$(date -u): Failed to restore cluster" >&2
     exit 1
