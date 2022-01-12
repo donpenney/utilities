@@ -113,15 +113,15 @@ function trigger_redeployment {
             continue # intermittent API failure
         fi
 
-        if [[ ${cur_rev} == ${expected_rev} ]]; then
-            echo -e "\n${name} redeployed successfully"
+        if [[ ${cur_rev} -ge ${expected_rev} ]]; then
+            echo -e "\n${name} redeployed successfully: revision ${cur_rev}"
             break
         fi
         echo -n "."; sleep 10
     done
 
     cur_rev=$(get_current_revision "${name}")
-    if [[ ${cur_rev} != ${expected_rev} ]]; then
+    if [[ ${cur_rev} -lt ${expected_rev} ]]; then
         echo "Failed to redeploy ${name}. Please investigate" >&2
         exit 1
     fi
