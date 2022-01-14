@@ -11,10 +11,9 @@ function usage {
 ${PROG}: Runs post-rollback restore procedure
 
 Options:
-    --container-backup <dir>
-    --cluster-backup <dir>
-    --etc-backup <dir>
-    --force:                  Skip ostree deployment check
+    --dir <dir>:    Location of backup content
+    --force:        Skip ostree deployment check
+    --skip-images:  Skip restore of container images
 ENDUSAGE
     exit 1
 }
@@ -29,12 +28,12 @@ function display_current_status {
 
 function get_container_id {
     local name=$1
-    crictl ps | awk -v name="${name}" '{if ($(NF-2) == name) {print $1; exit 0}}'
+    crictl ps 2>/dev/null | awk -v name="${name}" '{if ($(NF-2) == name) {print $1; exit 0}}'
 }
 
 function get_container_state {
     local name=$1
-    crictl ps | awk -v name="${name}" '{if ($(NF-2) == name) {print $(NF-3); exit 0}}'
+    crictl ps 2>/dev/null | awk -v name="${name}" '{if ($(NF-2) == name) {print $(NF-3); exit 0}}'
 }
 
 function get_current_revision {
@@ -130,11 +129,12 @@ function trigger_redeployment {
 }
 
 declare BACKUP_DIR="/var/recovery"
-declare RESTART_TIMEOUT=900 # 15 minutes
-declare REDEPLOYMENT_TIMEOUT=900 # 15 minutes
+declare RESTART_TIMEOUT=1200 # 20 minutes
+declare REDEPLOYMENT_TIMEOUT=1200 # 20 minutes
 declare SKIP_DEPLOY_CHECK="no"
+declare SKIP_IMAGE_RESTORE="no"
 
-LONGOPTS="dir:,force"
+LONGOPTS="dir:,force,skip-images"
 OPTS=$(getopt -o h --long "${LONGOPTS}" --name "$0" -- "$@")
 
 if [ $? -ne 0 ]; then
@@ -152,6 +152,10 @@ while :; do
             ;;
         --force)
             SKIP_DEPLOY_CHECK="yes"
+            shift
+            ;;
+        --skip-images)
+            SKIP_IMAGE_RESTORE="yes"
             shift
             ;;
         --)
@@ -187,56 +191,16 @@ if ! ostree admin status | grep -A 3 '^\*' | grep -q 'Pinned: yes'; then
     fi
 fi
 
-# Check for current cluster version
-ORIG_CLUSTER_VERSION=$(oc get clusterversions.config.openshift.io -o=jsonpath='{.items[0].status.desired.version}')
-if [ -z "${ORIG_CLUSTER_VERSION}" ]; then
-    echo "Failed to get cluster version. Please verify kubeconfig setup." >&2
-    exit 1
-fi
-
-# Get current container IDs
-ORIG_ETCD_CONTAINER_ID=$(get_container_id etcd)
-if [ -z "${ORIG_ETCD_CONTAINER_ID}" ]; then
-    echo "Failed to get etcd container id" >&2
-    exit 1
-fi
-
-ORIG_ETCD_OPERATOR_CONTAINER_ID=$(get_container_id etcd-operator)
-if [ -z "${ORIG_ETCD_OPERATOR_CONTAINER_ID}" ]; then
-    echo "Failed to get etcd-operator container id" >&2
-    exit 1
-fi
-
-ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID=$(get_container_id kube-apiserver-operator)
-if [ -z "${ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID}" ]; then
-    echo "Failed to get kube-apiserver-operator container id" >&2
-    exit 1
-fi
-
-ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID=$(get_container_id kube-controller-manager-operator)
-if [ -z "${ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID}" ]; then
-    echo "Failed to get kube-controller-manager-operator container id" >&2
-    exit 1
-fi
-
-ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID=$(get_container_id kube-scheduler-operator-container)
-if [ -z "${ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID}" ]; then
-    echo "Failed to get kube-scheduler-operator-container container id" >&2
-    exit 1
-fi
-
 display_current_status
 
-echo "##### $(date -u): Pausing machine config"
-oc patch --type=merge --patch='{"spec":{"paused":true}}' machineconfigpool/master
-oc patch --type=merge --patch='{"spec":{"paused":true}}' machineconfigpool/worker
-
-# Restore container images
-echo "##### $(date -u): Restoring container images"
-time for id in $(find ${BACKUP_DIR}/containers -mindepth 1 -maxdepth 2 -type d); do
-    /usr/bin/skopeo copy dir:$id containers-storage:local/$(basename $id)
-done
-echo "##### $(date -u): Completed restoring container images"
+if [ "${SKIP_IMAGE_RESTORE}" = "no" ]; then
+    # Restore container images
+    echo "##### $(date -u): Restoring container images"
+    time for id in $(find ${BACKUP_DIR}/containers -mindepth 1 -maxdepth 2 -type d); do
+        /usr/bin/skopeo copy dir:$id containers-storage:local/$(basename $id)
+    done
+    echo "##### $(date -u): Completed restoring container images"
+fi
 
 # Restore /usr/local content
 echo "##### $(date -u): Restoring /usr/local content"
@@ -267,6 +231,13 @@ if [ -f ${BACKUP_DIR}/extras.tgz ]; then
 fi
 
 systemctl daemon-reload
+
+# Get current container IDs
+ORIG_ETCD_CONTAINER_ID=$(get_container_id etcd)
+ORIG_ETCD_OPERATOR_CONTAINER_ID=$(get_container_id etcd-operator)
+ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID=$(get_container_id kube-apiserver-operator)
+ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID=$(get_container_id kube-controller-manager-operator)
+ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID=$(get_container_id kube-scheduler-operator-container)
 
 # Restore cluster
 echo "##### $(date -u): Restoring cluster"
