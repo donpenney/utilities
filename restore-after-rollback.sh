@@ -133,8 +133,9 @@ declare RESTART_TIMEOUT=1200 # 20 minutes
 declare REDEPLOYMENT_TIMEOUT=1200 # 20 minutes
 declare SKIP_DEPLOY_CHECK="no"
 declare SKIP_IMAGE_RESTORE="no"
+declare SKIP_WIPE="no"
 
-LONGOPTS="dir:,force,skip-images"
+LONGOPTS="dir:,force,skip-wipe,skip-images"
 OPTS=$(getopt -o h --long "${LONGOPTS}" --name "$0" -- "$@")
 
 if [ $? -ne 0 ]; then
@@ -156,6 +157,11 @@ while :; do
             ;;
         --skip-images)
             SKIP_IMAGE_RESTORE="yes"
+            SKIP_WIPE="yes"
+            shift
+            ;;
+        --skip-wipe)
+            SKIP_WIPE="yes"
             shift
             ;;
         --)
@@ -192,6 +198,15 @@ if ! ostree admin status | grep -A 3 '^\*' | grep -q 'Pinned: yes'; then
 fi
 
 display_current_status
+
+if [ "${SKIP_WIPE}" = "no" ]; then
+    echo "##### $(date -u): Wiping existing containers"
+    systemctl stop kubelet.service
+    crictl rmp -fa
+    systemctl stop crio.service
+    crio wipe -f
+    echo "##### $(date -u): Completed wipe"
+fi
 
 if [ "${SKIP_IMAGE_RESTORE}" = "no" ]; then
     # Restore container images
@@ -232,6 +247,10 @@ fi
 
 systemctl daemon-reload
 
+if [ "${SKIP_WIPE}" = "no" ]; then
+    systemctl start crio.service
+fi
+
 # Get current container IDs
 ORIG_ETCD_CONTAINER_ID=$(get_container_id etcd)
 ORIG_ETCD_OPERATOR_CONTAINER_ID=$(get_container_id etcd-operator)
@@ -250,8 +269,10 @@ fi
 echo "##### $(date -u): Restarting kubelet.service"
 time systemctl restart kubelet.service
 
-echo "##### $(date -u): Restarting crio.service"
-time systemctl restart crio.service
+if [ "${SKIP_WIPE}" = "yes" ]; then
+    echo "##### $(date -u): Restarting crio.service"
+    time systemctl restart crio.service
+fi
 
 echo "##### $(date -u): Waiting for required container restarts"
 
