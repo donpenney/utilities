@@ -1,0 +1,2325 @@
+##### Tue Jan 18 14:24:00 UTC 2022: Displaying current status
+##### Tue Jan 18 14:24:00 UTC 2022: oc adm upgrade && oc get co && oc get nodes -o wide && oc get mcp
+Cluster version is 4.9.11
+
+Upstream is unset, so the cluster will use an appropriate default.
+Channel: stable-4.9 (available channels: candidate-4.10, candidate-4.9, fast-4.9, stable-4.9)
+Updates:
+
+VERSION IMAGE
+4.9.12  quay.io/openshift-release-dev/ocp-release@sha256:dd71b3cd08ce1e859e0e740a585827c9caa1341819d1121d92879873a127f5e2
+4.9.13  quay.io/openshift-release-dev/ocp-release@sha256:0ff5adc1199c77c2814c2030642109b24039087a2621b19e553a2315bcdc4801
+NAME                                       VERSION   AVAILABLE   PROGRESSING   DEGRADED   SINCE   MESSAGE
+authentication                             4.9.11    True        False         False      29m     
+baremetal                                  4.9.11    True        False         False      23h     
+cloud-controller-manager                   4.9.11    True        False         False      23h     
+cloud-credential                           4.9.11    True        False         False      23h     
+cluster-autoscaler                         4.9.11    True        False         False      23h     
+config-operator                            4.9.11    True        False         False      23h     
+console                                    4.9.11    True        False         False      23h     
+csi-snapshot-controller                    4.9.11    True        False         False      20h     
+dns                                        4.9.11    True        False         False      20h     
+etcd                                       4.9.11    True        False         False      23h     
+image-registry                             4.9.11    True        False         False      20h     
+ingress                                    4.9.11    True        False         False      23h     
+insights                                   4.9.11    True        False         False      23h     
+kube-apiserver                             4.9.11    True        False         False      23h     
+kube-controller-manager                    4.9.11    True        False         False      23h     
+kube-scheduler                             4.9.11    True        False         False      23h     
+kube-storage-version-migrator              4.9.11    True        False         False      23h     
+machine-api                                4.9.11    True        False         False      23h     
+machine-approver                           4.9.11    True        False         False      23h     
+machine-config                             4.9.11    True        False         False      23h     
+marketplace                                4.9.11    True        False         False      23h     
+monitoring                                 4.9.11    True        False         False      23h     
+network                                    4.9.11    True        False         False      23h     
+node-tuning                                4.9.11    True        False         False      47m     
+openshift-apiserver                        4.9.11    True        False         False      63m     
+openshift-controller-manager               4.9.11    True        False         False      23h     
+openshift-samples                          4.9.11    True        False         False      47m     
+operator-lifecycle-manager                 4.9.11    True        False         False      23h     
+operator-lifecycle-manager-catalog         4.9.11    True        False         False      23h     
+operator-lifecycle-manager-packageserver   4.9.11    True        False         False      18h     
+service-ca                                 4.9.11    True        False         False      23h     
+storage                                    4.9.11    True        False         False      23h     
+NAME                                     STATUS   ROLES           AGE   VERSION           INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                                                       KERNEL-VERSION                 CONTAINER-RUNTIME
+cnfdf01.telco5gran.eng.rdu2.redhat.com   Ready    master,worker   23h   v1.22.3+ffbb954   10.8.34.11    <none>        Red Hat Enterprise Linux CoreOS 49.84.202111292103-0 (Ootpa)   4.18.0-305.28.1.el8_4.x86_64   cri-o://1.22.1-7.rhaos4.9.git8ed8e79.el8
+NAME     CONFIG                                             UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINECOUNT   DEGRADEDMACHINECOUNT   AGE
+master   rendered-master-44bdd5cee1f10616256303ae51af8542   True      False      False      1              1                   1                     0                      23h
+worker   rendered-worker-d8395a414eb9acc09dd06c3c690ce2a3   True      False      False      0              0                   0                     0                      23h
+##### Tue Jan 18 14:24:37 UTC 2022: Done
+##### Tue Jan 18 14:24:37 UTC 2022: Wiping existing containers
+Stopped sandbox aab2e6415bdcfe478b7879e12a3c2b111c924f0835b024a535be4c604bb0f88a
+Stopped sandbox 69e5867d5402c67a1d4ba2651ec2295593116f44772d5507d15ae8bb17e2edf9
+Stopped sandbox 7edb51e562e042fc230fd145a2ffdee7cff59f411dd00fea36a3052831f53def
+Stopped sandbox d72aca8783e4362095d62829ae31f742909bf2d8dd5d2bad7b52319150ff105f
+Stopped sandbox 99e0a9afae9153ceffbd52087b8655e2d8b77f4235348c74f803e60337637c59
+Stopped sandbox c6588f5a97460174fc58bbe64e887e90ce8bc446eabb35e5724236d5c11d5bdb
+Stopped sandbox 24be229e1bf25afa906d69404f93d27e28689bfadf528a0003fcfba4903428c5
+Stopped sandbox 64889ac18fb08dc042963395169823721139ef5db36db2560c6458f2bd3c8de6
+Stopped sandbox 55f3ed1de5939112e280ee5873938d8dd21cf5a0d8f2557e33a75534d2a47594
+Stopped sandbox b76e821bf103da51b730328a120c1592eca44c5e4bc9b2f8a16abd251cfeccfb
+Stopped sandbox e78459efc2238d810bc28b4e726be9921be5ccdf71fe5d802e81b5a57de50aad
+Stopped sandbox 6284f8871e29fdba1cbfe7d2534b68dd06c257b29ec391063f4182b0c414d61c
+Stopped sandbox cfd9561a6a432d73f0405e2988743e835dcaab000f89b0995e3a1d9af124ef2d
+Stopped sandbox 5b3ba1a659accaa125766baa2f6792901d78d9147ae91a924ae9853434a5ae2c
+Stopped sandbox 12d1105bce64d35fc0a3690acf243e8450849cee2ef75b15cd354e3f7c0b9f30
+Stopped sandbox df2f9c570c231b7063541a2642e74379d5e3f6952428d10ca99a8e25ec87c81d
+Removed sandbox aab2e6415bdcfe478b7879e12a3c2b111c924f0835b024a535be4c604bb0f88a
+Removed sandbox 69e5867d5402c67a1d4ba2651ec2295593116f44772d5507d15ae8bb17e2edf9
+Removed sandbox 7edb51e562e042fc230fd145a2ffdee7cff59f411dd00fea36a3052831f53def
+Removed sandbox d72aca8783e4362095d62829ae31f742909bf2d8dd5d2bad7b52319150ff105f
+Removed sandbox 24be229e1bf25afa906d69404f93d27e28689bfadf528a0003fcfba4903428c5
+Removed sandbox 64889ac18fb08dc042963395169823721139ef5db36db2560c6458f2bd3c8de6
+Removed sandbox 5b3ba1a659accaa125766baa2f6792901d78d9147ae91a924ae9853434a5ae2c
+Removed sandbox df2f9c570c231b7063541a2642e74379d5e3f6952428d10ca99a8e25ec87c81d
+Removed sandbox e78459efc2238d810bc28b4e726be9921be5ccdf71fe5d802e81b5a57de50aad
+Removed sandbox cfd9561a6a432d73f0405e2988743e835dcaab000f89b0995e3a1d9af124ef2d
+Removed sandbox 12d1105bce64d35fc0a3690acf243e8450849cee2ef75b15cd354e3f7c0b9f30
+Removed sandbox c6588f5a97460174fc58bbe64e887e90ce8bc446eabb35e5724236d5c11d5bdb
+Removed sandbox b76e821bf103da51b730328a120c1592eca44c5e4bc9b2f8a16abd251cfeccfb
+Removed sandbox 99e0a9afae9153ceffbd52087b8655e2d8b77f4235348c74f803e60337637c59
+Removed sandbox 6284f8871e29fdba1cbfe7d2534b68dd06c257b29ec391063f4182b0c414d61c
+Removed sandbox 55f3ed1de5939112e280ee5873938d8dd21cf5a0d8f2557e33a75534d2a47594
+Stopped sandbox 60b0ab09601abf5722ccfb270d207192879b1693c04c1ee98f6ce093c3d757d9
+Stopped sandbox 700f29990e3d79b19c316d9502cced2774d718c51b7ec596e3c63f57d5f2fa2c
+Stopped sandbox 35a804ea52e350fb37bdd4a2701bc2e0c67e9ba54be17f87ffa73a5a0f668b6e
+Stopped sandbox 8d6be5e4733542cabf5445edcfce5019f112e7ee02ba37dae878c8ffb4718c33
+Stopped sandbox 10e756f6f5b5d4deb6be343b6b6cc0ef61e620de1e4281afb1bb445e584b2525
+Removed sandbox 60b0ab09601abf5722ccfb270d207192879b1693c04c1ee98f6ce093c3d757d9
+Removed sandbox 700f29990e3d79b19c316d9502cced2774d718c51b7ec596e3c63f57d5f2fa2c
+Removed sandbox 35a804ea52e350fb37bdd4a2701bc2e0c67e9ba54be17f87ffa73a5a0f668b6e
+Removed sandbox 10e756f6f5b5d4deb6be343b6b6cc0ef61e620de1e4281afb1bb445e584b2525
+Removed sandbox 8d6be5e4733542cabf5445edcfce5019f112e7ee02ba37dae878c8ffb4718c33
+Stopped sandbox e9d7e439a34b5a4142cc03c4dd93c51de4b4cc4b0568e987f774e1d9c39cdb36
+Removed sandbox e9d7e439a34b5a4142cc03c4dd93c51de4b4cc4b0568e987f774e1d9c39cdb36
+time="2022-01-18T14:24:53Z" level=warning msg="Failed to decode the keys [\"storage.options.override_kernel_check\"] from \"/etc/containers/storage.conf\"."
+time="2022-01-18 14:24:53.676487734Z" level=info msg="Starting CRI-O, version: 1.22.1-7.rhaos4.9.git8ed8e79.el8, git: ()"
+time="2022-01-18 14:24:53.682623457Z" level=info msg="Internal wipe not set, meaning crio wipe will wipe. In the future, all wipes after reboot will happen when starting the crio server."
+##### Tue Jan 18 14:24:53 UTC 2022: Completed wipe
+##### Tue Jan 18 14:24:53 UTC 2022: Restoring container images
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:6d4be97d98959f31686a19ef0b57e96ef3cbe0634b1467998cd3dd720fa2946d
+Copying config sha256:01894fc77a296234051087d6c1bda35ec7b3142c9645b4ee0cc89390b8998d26
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:8ac8c5c58b5d6fd02e887d64712988d4b6c5e8d760f58a9a4b38a777cae3de37
+Copying config sha256:02d60f0060610337bdd7e38b51a6e9840b50335b807f5c19eaefad10e13056c3
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:6b918a6c5060b5f589a7a725d461da8e862f27a9969db09d4bd572a27e89120a
+Copying config sha256:02e1dc89633727742c3968312a934ffa9694c1d3e1d05dafb49f52c006257c23
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:73d8fc379a2f121e333fe3ebcd1610191ed1491542b9e183cc732a7330c92dd8
+Copying config sha256:03267cbcccc413c6c97a1ce1b45f08f06dcc4de629dd5448c272ed513ae37294
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:142aa354d46d3b6b85e65513dcb1272848d81d7a1d71aea9c2afd3e316fc7fb2
+Copying config sha256:0a6a25e7c0185f5a7d733715d1a61276fe60c512211afbdc90b068bfcc6e91b4
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:6c7f10da089fcb17ada00845a005e7df53a73611f0efc1179bd9eb794d57f23d
+Copying config sha256:0b911b3b8c102f38edc21a0258cec0d5617c6bb8a5b3f5078cace870d0ae4b5e
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:40eaa50ffbb8230e5188163241f8d8311410ca8c036ffa46ac14042086f88958
+Copying config sha256:11d31d5799c3bf2775fdb9fa7eb342cd736c0548239f0bd7a3fba2f1c66cad30
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:d6f59c45f9c5491b243cddf42e60c3b4b913f60499beb35024da79d3c25e8fb1
+Copying config sha256:11fe6dbaf13a20205ff2143ef1dbf08410e20e0a350b7aa5919095275f349e7c
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:3e4f94652365ee59d76caade1232b291288e816aec7ed080aac8055500b04c41
+Copying config sha256:14d59aa843a8df4a1d37957324122388e55dc07d018a1fb29d8bd0980fa3a3b2
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:d97fcced9f0824223b14bc6a82b92768689030d1d65a54268c71af22f6a4bc2d
+Copying config sha256:1b79fd20d6eff6548534511b51c1309d7b4fa0a68de42335477d6ccc2a52388e
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:61283d0e6378af0caa164a79650666a38e214441097cf622347b9bcc7dfb9209
+Copying config sha256:1c3650ff99cc803a1dcf6e8d2195167cc06163c99ff3da3be223e4628f04096a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:3c3aa70ecb8f7b172ae2ab35debbb724417b9188a0e9f6051aa40eef4f2b8064
+Copying config sha256:1c618bda3b774a5fc1727d2d5d762ffa40779e8dc19bc639ec96887ae3a0fd6f
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:7269d87e051e94be5a4dd0c1c617314f51151b446517d404ea63fb50d82b6b05
+Copying config sha256:1e423384e033efb23a446149b6a0ef5e5b66972a25e43e15dd7a64dbd8890385
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:b20e2310aafed787d32bf9fd3fd6d8c4e714f0fc1385adda8cba5892b2077f0d
+Copying config sha256:1efe25d06a5744e0fd65999aafd2e6f1eb92daf53300cf9c1ee53e17503307f8
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:473e596ceb22692a11c24fd79db47506be30a33f6d4edda199b788defffb0707
+Copying config sha256:273564a892f3a3e8686c3cecf7d818c032a842846d6b15ca571e4677ac871a6a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:0255fc3c0aeb8dad4d580a1c8a6b6f9299a2f89837012238bb70841bb2c4a29b
+Copying config sha256:2876a7cbb2964552a69d8180452cbf0cf0a94331b7b55d29c5a624998597300e
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:bd7baf5b5d3e9f38db3d4fa366869dd631a7d6b8d969916d8bd57e9f1f418c13
+Copying config sha256:2e99f4e76384d08ffe70c1c546049ce48d0e477c480fce44c4ab9e2b9268270f
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:79be5f36f50e6f7895822bbd05e5409fc4aaee806cf39cc050a997c22ddd87bb
+Copying config sha256:33e9bcb06e654ed1838afdaf019384ce7e24dc29f2ad3e8b835fcb53d51aae6e
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:c98c714af0a8d142634111a02d0c7f2cfa76b7da7454d9e7392989e137381d69
+Copying config sha256:363bee23d32532ff07edd9716ba9abf85ef4644b653e9a7df95f633bea563eb3
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:d133754e147940e41b3871ef58f42bf98833f35a5c140ca3cdf709a12d1bb95c
+Copying config sha256:38566ddd98bea2388c7a54d490d85a1e2ffe1498d03d81a4011d795ae1094501
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:1cce2fc70e3a00d86d03e723f8d5796f5259bf3ee4400744f9d769bdac7db2b0
+Copying config sha256:3b02cea342fa4b7ed6026b23b623e0d9f43fc2da74c8e2c35abf8d832c5f59b9
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:18b78f3fcd18f66242a9d5e20fb7f78b9b2d06aadac7dfa4a1c8fdbdd6867308
+Copying config sha256:3b21472ef07e9e158995a08972e5cb65d2bcefa45eb3ee51af29ae2200844a32
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:4648ae68a796dd948cc60e022cab71a4ef32694e3948e821c9a33262d2fc21b3
+Copying config sha256:3c36dae8abbe82fe871a7c1b544c71686a4b95635544d4c6f98dcf07079f20c5
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:94132ca02ebf60447c563b22d75563788fc9c47317a7f96e36d42a1985905d65
+Copying config sha256:415a1fbf58597ab253f870df7dd3cbf3b8e2ad345f978e82d5e5e7388f5e5870
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:89fd355ae8866fa530141ae850884ebe181b4eae59278db0ac4e40cfd2ecd69a
+Copying config sha256:41a4924f1525adf27f78e567bea72568c1fb266e01372b5b8087265916a3e80e
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:5d1ddde7531a31d5d27c0932897efa9810e051ade5b31cffb5b4d3ad89e18913
+Copying config sha256:421227e339de6898209dbba193ea901e0c7577abd2631472bb3730d96f6831f8
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:7aa20109f73bb8c778c696dab85bca57c9c9697e2eb0aa4f16010ea46bd9ba29
+Copying config sha256:42d79f237180cd72795c8c52a120ff048ae6e9f882daccc0d127955405574b28
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:021dfcd3cce01262d5125acfd72466a582c81aaf600e02be1321fae46a1887e4
+Copying config sha256:44d6eb0986f1d42ccbbb6d04d39559a8908b72281fc48de9ba30e721db879a41
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:98cf3fb589fdf0cedacc16c89852c694274747cb6089906af74d6eabe19a8243
+Copying config sha256:44e23a89e2c4e995c7888cb1f02617d505017e857b90a57099a0ec355a40c434
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:d7ca9f50c1b152875ba789d03316b7bf21d59fcb9530acbef33cac8db4979d08
+Copying config sha256:46a1273f08ee551a02e3949c44a50dfeab00b02d01c74edadc375c1cb48ede8f
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:d40cde679dd47e2a97960d233bbad2e3401d42709d1d403e6dfb15051cd74959
+Copying config sha256:4a15e955c5948264c40f0e5769f840a1169e295570a80889693dcb8074031304
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:272865297cbe4637fac19fe398c7b8eb1a7bc7a3f5b5cb17c9205a3f25fbc181
+Copying config sha256:4d3aadf834af1124f56ce74ad6e1a4d9fdf6ba446267ec3271cad951801f7921
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:d69207cd1243be99b3134a5ab0e42f9a856c2af088512dcfa1d942ce5ff2ae8b
+Copying config sha256:4f40e5f39c4d9ff67dedc165c3acbeaa8aff93cad6ce2989e0e7bc11b0ee127a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:8cf542772a731d21b650c4c5ec5097f592a42b4092dea5f0c388e0634e847d5a
+Copying config sha256:4f7087a7171e56978dd271ebab135abfe35e52a91d72a5276dbfe72d13afd8b1
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:4d99dba77010d25e58d0b49afe3e11430a095c18edede64fd4507e74724a00b2
+Copying config sha256:52c8b31effff7efb056aa76bb4bf94e1c88319ad4704a757e7b0cd2fcbebf356
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:84b8ac15ddfa9becdd369bd58aa75bbb5efea85e1182caa99d3069485ae932e3
+Copying config sha256:56bdbb63e36088da611b1f68407193c440131329ebb744710d92d726810f8f68
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:1fdc87ff3ace648206592e096bf1c4b8830e0c42d92c268ccd5be5a5ab10312f
+Copying config sha256:57708a207d410b821f97d7c05017d7660a515bff26c82b54964228bc0496d0cb
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:a7facdb046da517c1b691a9d4ddb78cb1209d663bdb920aacf772bf0a796b2df
+Copying config sha256:58fc04841e0109ec943c0c2e4d073b2eff910583dc5ac6223956ae1e188c37c8
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:e530008b70b3b751b3ec4396991bad4d01fe0af645358e5a04280d6644c29d79
+Copying config sha256:5a4c28cb76d12ee5c1c8cbc064bd6f1ef0dfe9abe10a9a6cb49222419ce0983b
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:fb4d96beedcc86832dfec2627e60d1448ef4975e6192abf21c52c0e8464474d4
+Copying config sha256:5b59892cb546e2ea53522ac2d895eddd0a6f482620d6771697abd1c65a4c21a3
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:37561226a5cb311df00501bb92ac2f0bd132639de912da73dbd54aa73a748540
+Copying config sha256:5be0842e08c03b1a64d7ea9fa41f9ff1eef65fcc27fbd1a103e8d3c5b3338636
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:58fa14bfced5be94e1877d311466c175f4a877837c3e659b275d1d1ee18c715a
+Copying config sha256:5cd42a041db2597c4be1c498fb212baa762dae435838f08394dca68fc2517f8f
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:3290cb5aeef928dac4bac89569d063d4a0a99a9f64fb4f43c2c55ee9d3ff6c6e
+Copying config sha256:5d77703142db144b4056519904da88bafc94c8c2dd3f1dabb6f482d6a426100a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:9fc52cb10edf598d300b36502f1c6a92fabc4effaa5ee0adc945c321c4b4fc0b
+Copying config sha256:5ddca0b5fbb916b012d20d7bd27d7c84af6831be9737952179ed643ef3194afb
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:abee8424a0de08a1b31ee419aab8cc3dcd375ba9141ad097b862c23dd51c6d81
+Copying config sha256:5e2c623acc29944651153a7331f33cbbab730746c5778f56ecd560add3e7adc9
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:1792f0fcd67e3840e2e33fcac246b306f484331c1297fbd5785f3b31339a0beb
+Copying config sha256:5ef4937870eab76fc5abb7202ed9031fc535c385417497af00b1e2c697d01b24
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:a4c89af246a0259c10d8ff29fc4a0ed883c463fd32ca508413618cd5b519ce00
+Copying config sha256:664899c9f85192dd0d6a6eea14d58d079c0cc2e80024bfd6900ec17724922724
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:1fe244f2bd0020bc3e7ab49c352db0f6a9d07b8c4f60f8de1e9c641df9e811e4
+Copying config sha256:667da570b94254db9bf2ea389d867262dc4f39fec1304a96840e5860819c3d12
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:3895ca28cd476360532e4ec5fd4892c41bde3b6ee2afcda1c3b7de852eaa9e29
+Copying config sha256:67ff73f0899326402f80ac238a8aea2b6887e298eb1fa568c2744a102e4d0c3b
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:00cd69fd091154e3661a0c50fe347d295fd528a5055c89ccfd339a57e6f3cd67
+Copying config sha256:6940df594b045e6deeaa8a518e73437a7f3c58ce58d37331bc4d68c9017ef3e9
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:a0eb52d60c5cf49ffbeae434ff477c93f5dff7c676833b525dcd15a19182f430
+Copying blob sha256:a3f7b44e644efd1e0259cf955cb83577db7020fe60ebdc0f9f344374f3a04c22
+Copying config sha256:6c05ec9ab67b16ec764941c52566059030e3d226ce4a84bc3beb02940053b96b
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:9bdaca6866e6f03661121de43bccd6474dc337cd1ea44c490df1b5a1bdf52012
+Copying config sha256:6c8c20c090d51cb76090f49dd472e500b918fc66f762f35327f41637b6399ffc
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:53d99458710524466dad31b217f899921efa09b2f8febb6de19fd55ca35bdcc5
+Copying config sha256:6ccefd60cc712c406830eaa0635737f614a61b4fe4a1ebdf1fa0fb4520cd7097
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:6dd263ab0291eb2ed7b195d2aee07cd6bb00478f99154bf57b0fd36d7f8c7915
+Copying config sha256:6e1c2b0b6bd80617058dace0ae1ccbc25c83d2fbe55d673da8e0acb87310e7a1
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:57367ddc2f52e47ce66ff1ec3dfa46f4fee9636ece71fe04eaebcb14361ffd73
+Copying blob sha256:24d5f24bdbd66dbcaf3659bb3a325604ffa5cf278330ce90f868a8dcda6d171d
+Copying config sha256:6ffd19ad5e066b803c98f9304bf99e821de79e726f62bd96f2196c84b0feadc4
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:aeefc4b65937e4a7acfb7819a3b400b662db71e9f915c31e757c417ae8f4625b
+Copying config sha256:72139ba541b3b0d1cfda90c3292b7f647c119d657a5cd1bd758b35b8f3c44b5a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:1d8b92a3a166026633de583b612cab34687efdcf9875e092134e9dc5705d9356
+Copying config sha256:72feff4fd251fceb9b001a1e3127cd0d9a332d0364fe64ebe4a06ed07e3f9f62
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:811061bcbc7b029717f7d7bc46c6fc3271be121d6c050d4e4d07be85feebb428
+Copying config sha256:768cc857ea1c912dd67678d5eca8771a5a40148d72ce361faafb40718cf17014
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:e2caac4ddd03e449b10a935c2e2d0c1dc309507d3b6bcb673697ee30f84558d6
+Copying config sha256:781c9e155039a0097aabe1179dfbebeaacc53023462a2447078dcd5adb99a73b
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:1f195ff7fd8aad170a4787b6dd982ea825e11221b29b3dd9cf42179a344b68a6
+Copying config sha256:838f8771055013d5b20d393d33b6d4328a47ebdd8f79b429c189a0a6bec277c8
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:935e590126170d389112751ff2ce42dbb708c37d36175451823be590dcb90427
+Copying config sha256:83bf11a1d53f944fba5ed318ad2895e236ea6f5190c7dc32835b25ca5d6da27b
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:b98bce82ad939b57dfc98523d696cb398fa3bd1db495d8633fa66dea7622b86f
+Copying config sha256:83d50208a3bee1ef2c2307fa3e0b7be268158350ccf6867b7bf19f7af5febc06
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:0e9745803e59c0cf501127c8f236c778de01dea361ea01c9375ce80cfc408557
+Copying config sha256:844d8e6edb8620e7f3d89f2ec1d91098347195b23e284030208c8be8119cfc48
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:1c2493a7e930e6a89cbb919ae2b93455ab3ede47250bfe2005ff85be8238e810
+Copying config sha256:84d351d4f95f2caab6d1a3cf64a3515e00c2acd7f29445363039ef5682b4f60a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:248e5d44636c293e44fa40d31b66987e353f4dfb44afdef65acd7059d5235857
+Copying blob sha256:bdcc9a84932a257ed1e9b35f40e2d02ad9d4cbd3d9067109612911fb94a0bc30
+Copying config sha256:8524e8daa604d7925f69020be4860610675d7e30ae36734a183062fc0beac698
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:85fa5fbd4e9082293d9deae3ef176ba391fd0a29147cd3c88b6288dc3331a0f7
+Copying config sha256:852d5b504aac6908994b41197276b6c024b6799916f88dc8772be76b925f1214
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:0e006ce9228f2b83712e2cd9c14aca0b208620cfc8d17f9a77d1fd9e8292cce1
+Copying config sha256:86232ef5880d09e11d3e1bd8b5b4f702070c61d98d803f93353cd8f66322b05c
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:f8f4decd8184e48c276ea3753264785ff2cd1645d3774c13ecb3d17eb3caba35
+Copying config sha256:89dfa2369fe8a5fc8c9da706f2952cd904e9b95f739505c18f6c9c0015fca6ad
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:5817b7acb64e9b7360c1a455f64445677ad7106b449ffeb5cd030a83c53e07fa
+Copying config sha256:8c69506cfa2b39c33391ec021c6bc828b7f9b9d7c628fd68c169c5a0971fc003
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:348a6b9f5eb95529733cd7a4cd1597e2a98d03381b41f2d48db02062d74ddbce
+Copying config sha256:8d5cae7144b747a23edfb73f7d34fe4565fa9ebce354569b9e34e35969c9df6b
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:66969e1a8bc48a57457fa66ed54cf9536c1e42e60c874cdf09070f7cc4c22444
+Copying config sha256:8f0f24cc6d771b06e06eefa3b4bf989cf9f11d1c601a305abe41f44e8f75e472
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:45653276d692a121dd9c63d9c9079d027441655fa2c34468b7ec6a7a475c86d1
+Copying config sha256:8fa861a5b30cdba2de6277cdd9c152f5a11c367934dbc4918994cbb21eb322a1
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:5b7f6e8f0f835aee2eef7a68f312acf3d474be7bfae9885e94eed03758a8e67a
+Copying config sha256:905d30591bdefbd97263ba8149670463e6ef9b0ae2c666e895d083a05b87687c
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:fe567a679200e6e7f2c42d8a104be9e89ab8c6e45eaa00d12e91678f533d8910
+Copying config sha256:91317d5678b536f7aaba64811c8d267b5544a301aa3a2b192a9bcf22706b37e5
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:d5bc1c3f55d3c5c9dd79910775f32451f214902a3432323cfb826e01f3baf503
+Copying config sha256:92d42422c5a53ee62195355657f531057eefb90e2eec5a3becb97b0395962d94
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:58c803e377782134da6b0f02a408de3e7d24aacfe334376fa04f6a8b021320a0
+Copying config sha256:94292da361377a7c1e9131376e96dc1abb022bd78ed9600a1d49c45d5150dbe8
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:8626739bedcae3a911bee22212510c15ab28545b84f58e2ff187cfb7ef78de60
+Copying config sha256:943c5fc25ff209dd803097f49e915352aec6ef81bdf3011d03ce72ed3ea3e921
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:6b101464aea9f58a52c1f777849cfbdaac392887c86a75afa38dc91eedf185b7
+Copying config sha256:959bb688dc718d3b8c91d7c31acf160c8b6c4865edd4987f795ea7142363b6e0
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:1168e48530e42cea9f5e9f3f208f4e2ac6286a009a81d9d7276a7f246f0c2ce6
+Copying config sha256:9a174e72faf2ed22f9c92d48f390e7d5b54326bbdc48bb6ef6bea7be25e13018
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:77b3a754c8df1c3a60f41116e1cc82470d9d0e79e03e5e4194d49a555b38c446
+Copying config sha256:9b0845f35964da5a55b6484fe660a1b42fe63555c5519b737560ca7c497c7784
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:782f3ba9cab9d1839b8a58c0bb6b8d29f310def4e5a3fa9b1f56c28320926bc2
+Copying config sha256:9b35ad59c5c3972f8461d4dda854312b8c617bdf31e5683d7ec31856a5c23782
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:6f2621079b3f0aa8179b9009f2e758d261792d0e25caeb65c4e3852f85b459bb
+Copying config sha256:9d8646de1a4ae22d056ff48cc7286ec826f0c61006778b512ea461dd1db87fe5
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:dc050a16dddb8f9f9445192610a6fc65abdd5392d41082717e84b5750001aeea
+Copying config sha256:9ef6b19e5c470b7714bd8a7f11951e8476e47e240065967558d130515bf6f622
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:390e8ab089a700745706a381f9661c988a94fc1932227fab2f162de4522967d2
+Copying config sha256:9fc1b9931e986fdc4d96d170aac8a9faaeed09c7cc9834a1ccd5398f08d1b44c
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:6cb09830fb20ffeb7346d09f9989efc8cc6a41fc4fb263ae592a7be941230e87
+Copying config sha256:a15ea71d56389037db78d56b7e53bce506f556b793087b965ba3ce68515cc301
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:b964c58490bc00ff37a3263e1703ee123bf6cdead10b46db262bafaa6b60aed1
+Copying config sha256:a2033727e750984ab1c7d334a6785fed704a4d4344265e658d2370a3b953b392
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:25d2f89ca7c344346ed2210bdc7d7ee4eaa0f8a6e0be7fa718451b7bd129d3ed
+Copying config sha256:a375bf9ae97d1497170d5b10a21dc3d3ae4310be49fba0c664c1e44f4f58c2f6
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:7cbafa75d8244160d4b84d51bb5e0030379cbc59f06ca454722fa2180651c57b
+Copying config sha256:a5e0cac2a6a4ebcfbb1dacee3fabb7ee3727b888207b2954b6c405c49fc9c96c
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:cd9c3932de777fd04d82e46ba9d7ddc590b00c9d43d1e8ca2ca3ec439ce9990f
+Copying config sha256:a92a466de2e773a731d5f2667ace8648c19adbb4500d07540c26e7cce6cf2e41
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:f951193b1c856d53a1e5ad939aad6d10c0a6c44edd5872a00e6dc4624e67ff57
+Copying config sha256:aacc406148c3848835260cf388607a21c16ca3c485866dccba17419c760d4b93
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:4a781908705603c471b693e4062f1f3a5247e56d29b6f979b452a1120906da4b
+Copying blob sha256:87c8c2afa4e259c2575e634aa6f4e23f796a529d1a458778952d97acc39b8e0d
+Copying config sha256:ad44d39577f95a16e7337912697e8cced763f9f68c7eb14a94bbaa0806e86d7e
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:e9383e74077dfa82957e8ca273fe99e137d8fe6546f6783059f62b53549f913f
+Copying config sha256:b13d1c87371a456d7f6e46827287c5ca25e7b4be1c5e4a6279dddf285f7d88b1
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:4559f715b4f672d8ffbfd24c8849616851f0f30365ffce57479fc462158ebf9e
+Copying config sha256:b2956d61df335d02cea837f91da511501826a28b975251af54ecd6eb7a0ce467
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:13dd6f54d8d56b2c77737c8bf6d1b3bbf414829023ba8caa4d3f89c2b9c27ec0
+Copying config sha256:b41f176b8227e2f87722cfc54246a7bdf36a2ff182837f265f8bec8b613811d6
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:348a5048a6b7ca9d1996999237c3710c236c65dda079a3714ffa5399bd9c9be2
+Copying config sha256:b7818c08b92799cf3108084e4901038fd2546244762120eeebd0975c45349c9a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:af46a1901200433dc2f3d02d51bbb271007356e0797f10c0619d79e446ba4c7a
+Copying config sha256:b9f19a09fcd0b13e70795d15ea10c54c1d0148bf26ab04325dfda0bbc71a4668
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:4cafde7d96d933f2b395f34ebd7b76f538e8474c0c4e1297284323328ae21738
+Copying config sha256:bd95bf38a5b6926a60510e82cd84be36b78c8753d8e339bd8df008fe8bf712f3
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:d53b5a8df9ffa978f6d23d4741f3b7f4f81725c14f14e23d1371f3d33b049b29
+Copying config sha256:be4dc94ccce371daf99ed3b52344257321907ae472964188d85ab83a4e0ea4d5
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:ff10f435103ff0f79e97f2f28a18d6ca6faa2e22e11e01d748f21e736d2b0556
+Copying blob sha256:4b594fcc1c7a213c8ee0a874dcd7898e0a780d98308bbade1592748b21b67fb8
+Copying config sha256:bfb327fcec84d64416f990093020252090584641ac4ab96cec6037c7266be049
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:0ce2c70d5d86da9b114a3173905aea906a5c73b6635aaa6fc405d5ac4f7a3d4f
+Copying config sha256:c1e44a5be3f4ec2d19849ce99ba3748a719eae1d78906c17bf685a66f478fe61
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:7660e5c1774d92539bfbd137d931d7d6a0a333b077834e80a361b52d8314882d
+Copying config sha256:c20e3cb7b63a6f8e267748bef1afd0f1c1391f879bdaddd61bdde34b29f7240e
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:8ecc148cd4fdc8bcd8fe63604e0bd825a6e1fdf53a2a5c5c913d21f0c6c71fb0
+Copying config sha256:c3298c900be08fd899f3087b48aa9d60f19d12447cb1c9f86ec60a5887eb5cde
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:3c81ce1d51d3e7cb4833d646709a39f28216cc36b1f173e6a21da031c60b7744
+Copying config sha256:c554102d0cd523a63e043137deaa276729c006073f759c824fe25faf80bcd33a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:2c28fff9d9c035e0fcdd3c0bb2a2a3dbf0f4a41f3cd522775e0f2f93ad74c6a2
+Copying config sha256:c7b9b70bee54376181fc4cb758294dcadac9925927a2567899573d70152db060
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:b990179d4de7036e6e886a917535fc4e6b5747686a1ce2343575f6fe550f8a9b
+Copying config sha256:c9c4a4528725d783e9ab12bf2a223474973cd1ed3f9d0782420065f1ab1c78f4
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:7eb28d99efbb21b9a0b9dc54f03b44b98ad1c3d552983afc76e13d789ce52559
+Copying config sha256:ca36c5936b8043e3200c7126a459fe97ddbdee503def5d892f943c752f70588a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:d2f4ff1d1cf046f51ffc0cfe5e8e93a57e78cd3c89721acb4f07d4292e64513a
+Copying config sha256:ca583bdfe708fd693f6d600eeddd0b13e1222cd26c0fbc3419e37e476293a55f
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:a78baa515579597be415513ffa4fd9d9c2d88dd10c332f53dd36ddb3f5ee7d86
+Copying config sha256:cb5c246fdda1a509ff62a429fb5c957e792769c6ba3be64ff7107525607c1bcb
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:8dc0e2d0bf59f5e99a9d1758bbc40821462e16c0f06f5a7f6a9e4940aac88820
+Copying config sha256:cc11b96c2acca4a2300813acd6fdd8284d285988a9bc9aff0f2e10806a07c133
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:d002873cf900abd6087616ad7bee3834a2d696d33f8c5687701fe79db20570b9
+Copying config sha256:cc865b61c2c442c7c9d7fb37ce9620b8f30a9b839d2124b6b602b2ca11e3ba60
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:a2c87115a31dfd010752edde03ea863a42dd03710e1dc576b16c9d13ff476b58
+Copying config sha256:cdb7c23c9d7d946948889db59872db58d6c4a67f7f6c04a4e4d35ce56b83c34c
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:c9cfa1c2336659a13fb325533653c36096c92323384a082f6efb786283de8275
+Copying config sha256:d12ee19477ec42805445b4c75cb0923a12cab900735e6bba0e39d2133cf26d13
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:e323473ea270eb7d74861c27691828ae6a30f96ddf2bec6c668aca0b45639d7a
+Copying config sha256:d35445c6261824c1da0c3b211ccd1175184592911a6606aa5d650c0a98d10348
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:695e6b7af0738d6969a52ce8b298bf2d17c6d269fbefb94611d0b7b108d7b87a
+Copying config sha256:d543025bb52e2c303f4ecd2dbd8097967303fc2bbafa41f771ace00c9e1b779c
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:9032b5331dbe9bbd6141c645efcf83df5422586335a4a51f87ccfc206fef3496
+Copying config sha256:d79b9967454ab8ca36dd31cb6d3931fed5110ffcb8c06cfb3bae91b96212b55a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:626d23532dc2d85258cfcee93293b3ae72898ccf45ee2dc419543d452c740cf2
+Copying config sha256:d7e343a695bed699caeccde00c3b3d2648458fd9860f715807e22022aa5d5572
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:490fa18ceb70aff506650e9fa843a066f81ae1e79d2f040d7d88fa748a84e973
+Copying config sha256:d9237b52de4202ab84bfc02c01557f1036fe7d785e0e9b883dbb13c9efb695cc
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:97fb702cb87f0860a0de7384eab6c6fe1b1e525459862cc7963922d8e1c4b2f7
+Copying config sha256:dc42af2dbcaf9102b22963b9ab8ecb815f47def24a4fddd2d8d176e18563fb03
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:fd3e99e3eac50af0f17a5c7c2cb047c9d5e86877435e745fb53714b16b97cac3
+Copying config sha256:e320dd7274972f53462d8cb5a49389c7d5f160bf16a93d52440efa66213fe509
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:4f09213e93c1f9eb75939d888d0cb3bfff165b6b70deb02c4bddc1b7c5da9aa0
+Copying config sha256:e49025ccafa971abf935dad3640e8f4d513bf2572e4a5bab2efc89b2b6fb17f2
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:4cc2b47f43ec85c2edd63b38fb8bd860c3ea23402bc8c981049f6207dcbea595
+Copying config sha256:e6c4c88000cd44d8e07dcfc4e7587079678f0d17098652f3be69c064e9018e4b
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:1c6786b92d9695d48b2d46b204ad00c08770514f6caca89ef94a5a16b1d3f316
+Copying config sha256:e722ed7113a02d47dd1064e5a2502cd1814bd7b90b60b42b3591eee5c6c41b34
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:835c7cbe3d0b6cc19e0048cf49d069e57fd0d66b05c749bd2ca182af616973d2
+Copying config sha256:e74570be6097e61526eedf1d386209deb2b57fac3c68c757889e12474fe90364
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:92f55f7e509799aa25b4e8b7b8004795c736f5d5abc8b9c3cfb3d15fabc960ea
+Copying config sha256:e78d99a6ed92c539484aecd28884a6ef5a63f38887ada86aed82670187ec74d0
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:224b2a7ac033108bf18bed002f22cd479ba71bff83df9b8255391e34c02c48d1
+Copying config sha256:e852c16bc4873e3d6b57d1f303f9921c98f074ec62b061a8bf72196eb4ef1edd
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:5ff058a3d33aadf44b29382f50e513c0a9079df9daa9cba7a842b754483b2b37
+Copying config sha256:e9bf7534abb42b2344921fd2fe7cf206d71529116e7622faf1ddd78850ce1512
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:85cd25e4f474e9edaf976302d356d91a2766e5c465235626540587f34580c052
+Copying config sha256:ea62183e62c65aa45839f445d7bca166626e5a0358196bd4c3283d9156b0a6eb
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:7b4c8aefd2e8a592701ecf6531759b14aec43f2f78a35229d267659a4e0d3d91
+Copying config sha256:eaf276bc41d04deea5914b44c28375cb3a9bd88ddb1e4f663e4df7756ce22b1b
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:acee3eeff440fb2dc3ff491293330bb72f5a1b7607fdda664317bb9523f3c322
+Copying config sha256:ee1af1fd1ae1fdb42153adc53b3c1009f842d29b1fad3a8626795fe1f3204554
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:cb112538e682ac4c2a7d835e787133019abb40bfa7e9b2318bc179b9b88af97e
+Copying config sha256:f0992e5067e69edc84fe52159a31ee0fd0bb0f19f4a4f9c1f1efbda7259e2819
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:d41910c91a701753b74fbd353d556bef74856c3517b05bef6d1e2cfd92fb4879
+Copying config sha256:f39f455854450781b6e4636bd8ae92cde2a60f08b332fb7cdae4dff2a2ff6fc1
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:4f12dc4e8f4dbeb0f61f142abac2602b16aae139c9a3c318bfd20c73cd3d0bf7
+Copying config sha256:f500805664515862f2e9bb6423da598f69659f08eaa88b3cab4074242adc643f
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:160c8c5484cedd253149b4bae84c43926a81ddf13088400a9e58ea9ae818bcbe
+Copying config sha256:f78b6bf11aac7f4e10156a708cef9d28a8df570550e43a953f80288886e3c80a
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:4760e2f86824098a77dea66971e6b6e30e06067bdff7acb82a70e41c784f301d
+Copying config sha256:f934f19f6becaee86e6acbede3dd9bb2091ac4a15770f335012c97704515cfec
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:cbcac596708e25b125478f2593b3e47b8084687e68628d43b6492c99bd8960a4
+Copying config sha256:f99d89207dde2181caa66ac041ab23545e15ac410e6e49ffd591ea4a06083e8c
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:7dfa1a07aa6b5d336fdcbcf77deac9a4fe5524069bee6e4534fbdfb4e01570a2
+Copying config sha256:fb9f224f0c5760f7c45342d0acd4ac466a76ed509fb73a8eab68e63686a62ce8
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:b52c5e905bb3fc1cc879ff76a8403472f6545e8a598eb2429fd2a0132dfad064
+Copying config sha256:fc1a9b381df507d49aa8a3d7c526f68f5ecb1b91688811e98c221ae158beb4ef
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:485d6a2e590fe3353658dbfd1d2de4c1e06060e403f677effa4a2c6a072f93b6
+Copying blob sha256:02b2b78102934328989b5e2cbd5c359ae6701d3a0cf33fd998fb678ecee39f6a
+Copying blob sha256:7b32f45212abe3981d23268a9a0ab1fd5971980a5628d693f00106fd47800ca3
+Copying config sha256:fda7b81a2ac31c57120295f6062e2295aa660bd44b5932df3b18b1f55a97a600
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:d607e71200948966f3b1dce3690b146c600adea0fffb5c5fda5ddca222f0d0f3
+Copying config sha256:fec4d310379f5034aabf40b6e30140be735682d864295a060741524e0be9c1df
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:1fc9095917ab7e1df54f77dd745c855738f58c1084712be10756c43912f09e96
+Copying blob sha256:1a821db93686580a7299f6288af8deb436ff85155bb2685f0e37938618b32d28
+Copying config sha256:f7176fae9cd115576eb1c00b12802628026f56bf8f80e7509af511f7969fccf0
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:afe0da4220817526413be1d1421b88f9ff1036db372fb5c3deaa9c7dad315034
+Copying config sha256:fd011669fe003a39feb064c2bb3ffd77d11bdba920b906a75eed26eab6f329da
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:efd6fdaf6d9e2e4735b7f8fded148e9133c2f6bd38554b774acd473f49ec3c97
+Copying config sha256:ac7b1302728d75861fc97c3af4d789debb3d180fb60b6eb014cfe0057e267b22
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:2512d5c93b1661c86adaefe494e4a6edbaaed1862dcfd060d72c0b63c30a872d
+Copying config sha256:45e5caff2d90b4f79d20ca9bb30da72d8f880ce689fd382c61eab4273a18e1a9
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:b923cadedb11876c0525eb42553bdc55eebd0eae206ab285dbc851085976b8bd
+Copying config sha256:0e40eb622f5e6d2612fecb8f717c82499c3c9c99a7ed18e6f88f8470bfc22a6b
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:c2c52f7b72086850b89842a3bb9a43845bfccbf50bff08246c3aaeaf7aff1955
+Copying config sha256:f0661951ec24308bd2a8cd2f11069ddf9508851e150a5dabd3da2a0055e4b0f9
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:ebce13fc48f3bbd653a88ab15763d64628c548ca1b6a32fdc2d687d273017ea9
+Copying config sha256:a4196d92916e9ed1dc06f9d6f3761b27d48ccad78667dd6775bdb4e4d15b0a7b
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:a8832b2342495eba05d452947db2b5412401bf589cbd03bc95d4876f0e1577fb
+Copying config sha256:4cf4ce001c78e56c323bdf25bbe4f55d4e527156dd7efea3333b91d124517728
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:d2f04e44c5909028b1357d82d25ab91552d8e33e7042578dc7b3e1129f7fc058
+Copying config sha256:82d69c134be4032f8454b7659a0174790d8a361d44a661e364393adba07665e8
+Writing manifest to image destination
+Storing signatures
+Getting image source signatures
+Copying blob sha256:5bc03dec623975972bc748cb1da06ce8b4cf854d38c854a9e5f5bcad48caf6cc
+Copying blob sha256:525ed45dbdb13def52e6eb9639a513ce72042bee7b5de070f71a35487429850d
+Copying blob sha256:758ace4ace74ea305c16f9787af32781f4296c4c282fa98ec490df9c848fac7c
+Copying blob sha256:ac83cd3b61fd0ad9220a7090d71020dfab9c172836d07cd8da21b88de9388397
+Copying blob sha256:6481b670e391a83f6a36c79730815b92354ed86af133980f8140fe2f614dce94
+Copying config sha256:e7062947cfea99de2be7fca7b2e1d935e6b2de826aa4edeaf2df19415d00dfde
+Writing manifest to image destination
+Storing signatures
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/d1a9e73e12ad162d62471317fb715eaa01cad24145a5cf48345ff7e41cb37d4d: open /var/recovery/containers/d1a9e73e12ad162d62471317fb715eaa01cad24145a5cf48345ff7e41cb37d4d/manifest.json: no such file or directory"
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/0c117cf0bdf13b2c64553577771975e36d64f3173632fbd1bb5415f51c45401f: open /var/recovery/containers/0c117cf0bdf13b2c64553577771975e36d64f3173632fbd1bb5415f51c45401f/manifest.json: no such file or directory"
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/522ffb2e0b3ec25ddacf9b41cade99e64ac29dc9784c1ba364acd9a125cfbf59: open /var/recovery/containers/522ffb2e0b3ec25ddacf9b41cade99e64ac29dc9784c1ba364acd9a125cfbf59/manifest.json: no such file or directory"
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/13a29090033f7233c65b4759528a5df109c56dd3a151a674f9339aa7f73b9e57: open /var/recovery/containers/13a29090033f7233c65b4759528a5df109c56dd3a151a674f9339aa7f73b9e57/manifest.json: no such file or directory"
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/f86a16c8d49cd21c3f2b5868180a49698024e67af12baa625097475aefee817c: open /var/recovery/containers/f86a16c8d49cd21c3f2b5868180a49698024e67af12baa625097475aefee817c/manifest.json: no such file or directory"
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/db98ed9e13b44c946bda1d85d4eca9f69f67f39421cc31300daf4700ecd97c30: open /var/recovery/containers/db98ed9e13b44c946bda1d85d4eca9f69f67f39421cc31300daf4700ecd97c30/manifest.json: no such file or directory"
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/eed904b8ca6ac4ec9b29fd3aaeeb7f9f64b948252d31dc2a5f2c54f8cad9ba6c: open /var/recovery/containers/eed904b8ca6ac4ec9b29fd3aaeeb7f9f64b948252d31dc2a5f2c54f8cad9ba6c/manifest.json: no such file or directory"
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/385d8b8e43a85c0629aabbac1295a88c1a25162392c08f048a2878053f0776f1: open /var/recovery/containers/385d8b8e43a85c0629aabbac1295a88c1a25162392c08f048a2878053f0776f1/manifest.json: no such file or directory"
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/36a1b07bce006117006ad85d558ba600558f36fec9b67e8e714d6dba50a634b4: open /var/recovery/containers/36a1b07bce006117006ad85d558ba600558f36fec9b67e8e714d6dba50a634b4/manifest.json: no such file or directory"
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/3599dfb795b1aebf261869b4e909cb6a29b3f83b099f5590a6d0739189c2b589: open /var/recovery/containers/3599dfb795b1aebf261869b4e909cb6a29b3f83b099f5590a6d0739189c2b589/manifest.json: no such file or directory"
+time="2022-01-18T14:25:01Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/70f56486c7c859a77cb5deff2d3058cb26a5f400407efb91de35ffb8fc9172d1: open /var/recovery/containers/70f56486c7c859a77cb5deff2d3058cb26a5f400407efb91de35ffb8fc9172d1/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/84c955fef93d6acb79f09908d666f907cf8e416e873334b743a30b0ab99c5cb5: open /var/recovery/containers/84c955fef93d6acb79f09908d666f907cf8e416e873334b743a30b0ab99c5cb5/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/ba86986a124d2e39f8752f5a856183a603ff0df38596882a8ea21f527489393e: open /var/recovery/containers/ba86986a124d2e39f8752f5a856183a603ff0df38596882a8ea21f527489393e/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/25a1c4f3ce65802de62930a9923144db7ed98aab837cf659a5c7c59cb2e063a9: open /var/recovery/containers/25a1c4f3ce65802de62930a9923144db7ed98aab837cf659a5c7c59cb2e063a9/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/10d4b829370e9118227e9a3c8dc3fe210e3756a7860ea09ea75a6d126558c359: open /var/recovery/containers/10d4b829370e9118227e9a3c8dc3fe210e3756a7860ea09ea75a6d126558c359/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/7e299a2ebab5b7958bd4878b2c4277c685bfe2c567757117fdc3e117bed89f29: open /var/recovery/containers/7e299a2ebab5b7958bd4878b2c4277c685bfe2c567757117fdc3e117bed89f29/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/3c1eb674c5c2b91c7a63996395cd9e85922f61622b15cf9452d718bef6e6eb09: open /var/recovery/containers/3c1eb674c5c2b91c7a63996395cd9e85922f61622b15cf9452d718bef6e6eb09/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/25c9923d886cc632479ce0248bde6952bb05b235f483c5ac8611d6af06152d5c: open /var/recovery/containers/25c9923d886cc632479ce0248bde6952bb05b235f483c5ac8611d6af06152d5c/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/58d066be2b6ceb959147fe5eb5a00ed3cc53a8305c91370bc54b40a56d9ce6cf: open /var/recovery/containers/58d066be2b6ceb959147fe5eb5a00ed3cc53a8305c91370bc54b40a56d9ce6cf/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/7288dc77bca382b1a5920d84c5eccc61002588a369476be301a080541c366d3e: open /var/recovery/containers/7288dc77bca382b1a5920d84c5eccc61002588a369476be301a080541c366d3e/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/fa625e676378a53089efb651ac299814aa30c03acc55df2224f0a7f0fff23291: open /var/recovery/containers/fa625e676378a53089efb651ac299814aa30c03acc55df2224f0a7f0fff23291/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/dc656a2ef89f2a2f8e69908477ab0362675d711182ffe0a34cf7b931f07efd89: open /var/recovery/containers/dc656a2ef89f2a2f8e69908477ab0362675d711182ffe0a34cf7b931f07efd89/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/fcbf40d948dadd12ea6e8eea103439b9d877e7a5f3461b8f3d37c2b596386f2a: open /var/recovery/containers/fcbf40d948dadd12ea6e8eea103439b9d877e7a5f3461b8f3d37c2b596386f2a/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/6ab45cf1299ebe905945d36f89b74b631d3ae7730217671c89a1917c6547794d: open /var/recovery/containers/6ab45cf1299ebe905945d36f89b74b631d3ae7730217671c89a1917c6547794d/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/103f51f0afcce60cc7859f1c07f2fd9d2fb01b602d31dbaa454653bd16d1b112: open /var/recovery/containers/103f51f0afcce60cc7859f1c07f2fd9d2fb01b602d31dbaa454653bd16d1b112/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/f043bd6a8f2b6882172ef6b7e7487fed25db442c695c1f8aeed2896d1ebf9ddd: open /var/recovery/containers/f043bd6a8f2b6882172ef6b7e7487fed25db442c695c1f8aeed2896d1ebf9ddd/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/e949d5411190f7303e00458280c5ae5f907af7144554647c8d391474698acb5e: open /var/recovery/containers/e949d5411190f7303e00458280c5ae5f907af7144554647c8d391474698acb5e/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/19f92c4e2ed0802b56b6fe44978720315f4fe89c4442e2631012ffc637b14fe5: open /var/recovery/containers/19f92c4e2ed0802b56b6fe44978720315f4fe89c4442e2631012ffc637b14fe5/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/ab51a68bf32481cdb2e496c46cb625278baf07ac5c216afae23449130c54e6ca: open /var/recovery/containers/ab51a68bf32481cdb2e496c46cb625278baf07ac5c216afae23449130c54e6ca/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/be523bfc1ba2161ade019288e35ff6c67953fbbc8cd47e368c02347230d6d751: open /var/recovery/containers/be523bfc1ba2161ade019288e35ff6c67953fbbc8cd47e368c02347230d6d751/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/0d2e7d06ca3dc29e953d66f33a4757ff8b138ae0565b66440c7dd3bef5e22254: open /var/recovery/containers/0d2e7d06ca3dc29e953d66f33a4757ff8b138ae0565b66440c7dd3bef5e22254/manifest.json: no such file or directory"
+time="2022-01-18T14:25:02Z" level=fatal msg="Error determining manifest MIME type for dir:/var/recovery/containers/3433e2d7289bf8a6ff299e6b6de1f950d92e1b01bd4926efbfc9d01f7ecea0a3: open /var/recovery/containers/3433e2d7289bf8a6ff299e6b6de1f950d92e1b01bd4926efbfc9d01f7ecea0a3/manifest.json: no such file or directory"
+
+real	0m8.985s
+user	0m9.675s
+sys	0m4.642s
+##### Tue Jan 18 14:25:02 UTC 2022: Completed restoring container images
+##### Tue Jan 18 14:25:02 UTC 2022: Restoring /usr/local content
+sending incremental file list
+
+sent 813 bytes  received 21 bytes  1,668.00 bytes/sec
+total size is 238,108  speedup is 285.50
+
+real	0m0.009s
+user	0m0.001s
+sys	0m0.004s
+##### Tue Jan 18 14:25:02 UTC 2022: Completed restoring /etc content
+##### Tue Jan 18 14:25:02 UTC 2022: Restoring /etc content
+sending incremental file list
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/release-metadata
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/image-references
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_99_machine-api-operator_00_tombstones.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_service-ca-operator_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_service-ca-operator_02_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_service-ca-operator_01_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_openshift-controller-manager-operator_03_operand-servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_openshift-controller-manager-operator_02_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_openshift-controller-manager-operator_01_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_openshift-controller-manager-operator_00_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_openshift-apiserver-operator_05_check-endpoints_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_openshift-apiserver-operator_05_check-endpoints_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_openshift-apiserver-operator_04_servicemonitor-apiserver.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_openshift-apiserver-operator_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_openshift-apiserver-operator_02_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_openshift-apiserver-operator_01_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_olm_01-prometheus-rule.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_olm_00-service-monitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_machine-config-operator_01_prometheus-rules.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_machine-config-operator_00_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_machine-api-operator_04_alertrules.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_machine-api-operator_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-scheduler-operator_04_servicemonitor-scheduler.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-scheduler-operator_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-scheduler-operator_02_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-scheduler-operator_01_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-controller-manager-operator_05_alerts.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-controller-manager-operator_04_servicemonitor-controller-manager.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-controller-manager-operator_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-controller-manager-operator_02_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-controller-manager-operator_01_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-apiserver-operator_05_api_performance_dashboard.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-apiserver-operator_04_servicemonitor-apiserver.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-apiserver-operator_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-apiserver-operator_02_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_kube-apiserver-operator_01_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_ingress-operator_03_prometheusrules.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_ingress-operator_02_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_ingress-operator_01_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_ingress-operator_00_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_etcd-operator_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_etcd-operator_03_prometheusrule.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_etcd-operator_02_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_etcd-operator_01_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_dns-operator_03_prometheusrules.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_dns-operator_02_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_dns-operator_01_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_dns-operator_00_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_console-operator_02_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_console-operator_01_prometheusrbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-update-keys_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-storage-operator_02_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-storage-operator_01_prometheusrbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-monitoring-operator_01-dashboards.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-monitoring-operator_00-operatorgroup.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-machine-approver_04_alertrules.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-machine-approver_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-machine-approver_02_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-machine-approver_01_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-image-registry-operator_02_operator-servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-image-registry-operator_01_operand-servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-image-registry-operator_00_servicemonitor-rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-baremetal-operator_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-authentication-operator_03_prometheusrule.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-authentication-operator_02_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cluster-authentication-operator_01_prometheusrbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cloud-credential-operator_04_alertrules.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cloud-credential-operator_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cloud-credential-operator_02_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_90_cloud-credential-operator_01_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_06_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_05_osimageurl.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_04_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_03_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_02_images.configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_01_machineconfigpool.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_01_machineconfig.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_01_kubeletconfig.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_01_containerruntimeconfig.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_00_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_80_machine-config-operator_00_clusterreader_clusterrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_03-cluster-operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_02-deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_02-deployment-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_01-service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_01-service-account.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_01-role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_01-role-binding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_01-cluster-role-binding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_00-namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_00-custom-resource-definition.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_dns-operator_00-cluster-role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_console-operator.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_cluster-network-operator_05_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_cluster-network-operator_03_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_cluster-network-operator_03_deployment-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_cluster-network-operator_02_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_cluster-network-operator_01_pki_crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_cluster-network-operator_01_egr_crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_cluster-network-operator_01_credentialsrequest.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_cluster-network-operator_01_crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_70_cluster-network-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_service-ca-operator_07_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_service-ca-operator_05_deploy.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_service-ca-operator_05_deploy-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_service-ca-operator_04_sa.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_service-ca-operator_03_operator.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_service-ca-operator_03_cm.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_service-ca-operator_02_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_service-ca-operator_02_crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_service-ca-operator_01_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_service-ca-operator_00_roles.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_12_prometheus_rule.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_11_service_monitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_10_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_09_operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_09_operator-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_08_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_07_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_06_role_binding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_05_role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_04_service_account.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_operator-marketplace_01_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_99-operatorstatus.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_13-operatorgroup-default.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_09-aggregated.clusterrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_08-catalog-operator.deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_08-catalog-operator.deployment.ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_07-olm-operator.deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_07-olm-operator.deployment.ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_07-collect-profiles.cronjob.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_06-psm-operator.deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_06-psm-operator.deployment.ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_02-services.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_01-olm-operator.serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-subscriptions.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-pprof-secret.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-pprof-rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-pprof-config.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-packageserver.pdb.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-operators.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-operatorgroups.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-operatorconditions.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-installplans.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-clusterserviceversions.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_olm_00-catalogsources.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_installer_coreos-bootimages.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_07-servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_07-cluster-operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_06-deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_05-service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_04-serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_04-service-ca-configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_04-proxy-cert-configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_03-prometheus_rolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_03-prometheus_role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_03-clusterrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_insights-operator_02-namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_driver-toolkit_01-openshift-imagestream.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_spring-with-s2i.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_sample-application-quickstart.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_quarkus-with-s2i.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_quarkus-with-helm.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_ocs-install-tour-quickstart.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_node-with-s2i.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_monitor-sampleapp-quickstart.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_manage-helm-repos.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_install-serverless.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_install-odf.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_explore-pipeline-quickstart.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_add-healthchecks-quickstart.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_09-console-link-openshift-learning-portal.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_09-console-link-openshift-blog.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_08-clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_07-operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_07-operator-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_07-downloads-helm.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_06-sa.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_05-service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_05-config.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_04-rbac-rolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_04-rbac-rolebinding-cluster.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_03-rbac-role-ns-operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_03-rbac-role-ns-openshift-console-user-settings.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_03-rbac-role-ns-openshift-config.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_03-rbac-role-ns-openshift-config-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_03-rbac-role-ns-console.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_03-rbac-role-cluster.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_03-rbac-role-cluster-extensions.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_02-namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_01-operator-config.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_01-oauth.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_console-operator_01-helm.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_config-operator_09_user-priority-class.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_11_cluster_operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_10_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_10_deployment-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_09_metrics_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_08_operator_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_07_service_account.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_06_operator_cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_05_crd_operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_04_cluster_csi_driver_crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_03_credentials_request_vsphere_detector.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_03_credentials_request_vsphere_csi.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_03_credentials_request_ovirt.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_03_credentials_request_manila.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_03_credentials_request_gcp.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_03_credentials_request_cinder.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_03_credentials_request_azure.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_03_credentials_request_aws.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-storage-operator_02_csi_driver_operators_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_09-servicemonitor-rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_08-openshift-imagestreams.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_07-clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_06-servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_06-operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_06-operator-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_06-metricsservice.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_05-kube-system-rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_04-openshift-rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_03-rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_03-rbac-proxies-role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_03-rbac-proxies-role-binding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_03-rbac-imageconfig-role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_03-rbac-imageconfig-role-binding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_02-sa.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_010-prometheus-rules.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-samples-operator_01-namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_11_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_10_flowschema.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_09_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_07_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_06_roles.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_05_builder-deployer-config.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_04_metricservice.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_03_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_03_config.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_02_config.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-openshift-controller-manager-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-node-tuning-operator_60-clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-node-tuning-operator_50-operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-node-tuning-operator_50-operator-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-node-tuning-operator_40-rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-node-tuning-operator_30-monitoring.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-node-tuning-operator_20-crd-tuned.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-node-tuning-operator_20-crd-profile.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-node-tuning-operator_10-namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_06-clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_05-deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_05-deployment-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_04-config.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_03-role-binding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_02-role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_01-namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_00_0thanosruler-custom-resource-definition.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_00_0servicemonitor-custom-resource-definition.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_00_0prometheusrule-custom-resource-definition.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_00_0prometheus-custom-resource-definition.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_00_0probe-custom-resource-definition.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_00_0podmonitor-custom-resource-definition.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_00_0alertmanager-custom-resource-definition.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-monitoring-operator_00_0alertmanager-config-custom-resource-definition.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-machine-approver_05-clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-machine-approver_04-deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-machine-approver_03-metrics-service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-machine-approver_02-kube-rbac-proxy-config.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-machine-approver_01-rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-machine-approver_00-ns.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_03-cluster-operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_02-deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_02-deployment-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_01-trusted-ca-configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_01-service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_01-service-account.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_01-role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_01-role-binding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_01-cluster-role-binding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_00-namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_00-ingress-credentials-request.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_00-custom-resource-definition.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_00-custom-resource-definition-internal.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-ingress-operator_00-cluster-role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_09-prometheus-rules.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_08-clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_07-operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_07-operator-service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_07-operator-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_06-ca-serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_05-ca-rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_04-ca-trusted.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_03-sa.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_02-rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_01-registry-credentials-request.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_01-registry-credentials-request-openstack.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_01-registry-credentials-request-ibmcos.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_01-registry-credentials-request-gcs.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_01-registry-credentials-request-azure.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_01-namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_01-crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-image-registry-operator_00-crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_10_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_08_webhook_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_07_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_07_deployment-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_05_user_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_05_operator_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_05_operand_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_04_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_03_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_03_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_02_operator_cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-csi-snapshot-controller-operator_01_config.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-autoscaler-operator_99_tombstones.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-autoscaler-operator_10_cluster_reader_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-autoscaler-operator_08_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-autoscaler-operator_07_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-autoscaler-operator_06_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-autoscaler-operator_05_kube_rbac_proxy.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-autoscaler-operator_04_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-autoscaler-operator_03_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-autoscaler-operator_02_machineautoscaler.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-autoscaler-operator_01_clusterautoscaler.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_09_flowschema.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_08_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_07_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_05_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_04_roles.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_03_operator_trusted_ca.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_03_openshift_service_ca.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_03_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_02_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_02_config.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_01_config.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cluster-authentication-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_05-iam-ro-credentialsrequest.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_05-gcp-ro-credentialsrequest.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_04-cluster-operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_03-deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_02-sa.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_01-trusted-ca-configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_01-service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_01-role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_01-role-binding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_01-operator-config.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_01-cluster-role.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_01-cluster-role-binding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_00-namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_00-crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_00-config-custresdef.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_50_cloud-credential-operator_00-clusterreader_clusterrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_49_cluster-storage-operator_01_operator_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_09_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_08_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_07_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_07_deployment-ibm-cloud-managed.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_06_operatorconfig.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_05_roles.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_04_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_03_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_02_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_01_storage_state_crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_01_storage_migration_crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_40_kube-storage-version-migrator-operator_00_config.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_07_clusteroperator.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_06_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_05_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_05_prometheus_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_05_kube-rbac-proxy-config.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_04_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_03_webhookservice.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_03_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_02_metal3provisioning.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_01_trusted-ca-configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_31_cluster-baremetal-operator_01_images.configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_09_flowschema.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_08_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_07_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_06_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_05_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_04_roles.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_03_trusted_ca_cm.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_03_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_01_operator.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_01_config.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_openshift-apiserver-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_13_machinehealthcheck.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_12_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_11_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_10_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_10_kube-rbac-proxy-config.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_09_security_context_constraint.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_09_rbac.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_08_webhook_service.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_07_machinehealthcheck.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_03_machineset.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_02_machine.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_01_trusted-ca-configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_01_images.configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_machine-api-operator_00_credentials-request.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_config-operator_08_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_config-operator_07_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_config-operator_05_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_config-operator_04_roles.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_config-operator_03_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_config-operator_02_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_config-operator_02_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_config-operator_01_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_config-operator_01_operator.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_config-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_30_baremetal-operator_01_baremetalhost.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_26_cloud-controller-manager-operator_14_credentialsrequest-azure.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_26_cloud-controller-manager-operator_13_credentialsrequest-openstack.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_26_cloud-controller-manager-operator_12_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_26_cloud-controller-manager-operator_11_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_26_cloud-controller-manager-operator_03_rbac_provider.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_26_cloud-controller-manager-operator_02_rbac_operator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_26_cloud-controller-manager-operator_01_images.configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_26_cloud-controller-manager-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-scheduler-operator_07_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-scheduler-operator_06_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-scheduler-operator_05_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-scheduler-operator_04_clusterrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-scheduler-operator_03_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-scheduler-operator_02_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-scheduler-operator_02_operator.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-scheduler-operator_01_config.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-scheduler-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-controller-manager-operator_07_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-controller-manager-operator_06_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-controller-manager-operator_05_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-controller-manager-operator_04_clusterrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-controller-manager-operator_03_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-controller-manager-operator_02_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-controller-manager-operator_01_operator.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-controller-manager-operator_01_config.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_25_kube-controller-manager-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_08_flowschema.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_07_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_06_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_05_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_04_clusterrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_03_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_02_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_01_operator.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_01_config.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_scc-restricted.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_scc-privileged.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_scc-nonroot.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_scc-hostnetwork.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_scc-hostmount-anyuid.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_scc-hostaccess.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_scc-anyuid.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_cr-scc-restricted.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_cr-scc-privileged.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_cr-scc-nonroot.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_cr-scc-hostnetwork.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_cr-scc-hostmount-anyuid.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_cr-scc-hostaccess.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_20_kube-apiserver-operator_00_cr-scc-anyuid.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_10_flowschema.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_07_clusteroperator.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_06_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_05_serviceaccount.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_04_clusterrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_03_secret.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_03_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_02_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_01_operator.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_01_config.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_12_etcd-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_samplesconfig.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_consoleyamlsample.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_consolequickstart.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_consoleplugin.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_consolenotification.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_consolelink.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_consoleexternalloglink.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_consoleclidownload.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_02_config.clusterrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_scheduler.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_project.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_openshift-config-ns.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_openshift-config-managed-ns.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_oauth.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_network.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_ingress.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_infrastructure.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_imagecontentsourcepolicy.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_image.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_featuregate.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_dns.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_console.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_config.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_build.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_authentication.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10_config-operator_01_apiserver.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_10-helm-chart-repository.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_scheduler.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_proxy.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_project.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_operatorhub.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_oauth.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_network.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_ingress.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_infrastructure.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_image.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_featuregate.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_dns.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_console.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_build.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_authentication.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_05_config-operator_02_apiserver.cr.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_03_securityinternal-openshift_02_rangeallocation.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_03_security-openshift_01_scc.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_03_quota-openshift_01_clusterresourcequota.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_03_config-operator_01_proxy.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_03_config-operator_01_operatorhub.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/0000_03_authorization-openshift_01_rolebindingrestriction.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/release-manifests/
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0001_00_cluster-version-operator_03_service.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0000_90_cluster-version-operator_02_servicemonitor.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0000_90_cluster-version-operator_01_prometheusrolebinding.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0000_90_cluster-version-operator_00_prometheusrole.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0000_00_cluster-version-operator_03_deployment.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0000_00_cluster-version-operator_02_roles.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0000_00_cluster-version-operator_01_clusterversion.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0000_00_cluster-version-operator_01_clusteroperator.crd.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0000_00_cluster-version-operator_01_admingate_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0000_00_cluster-version-operator_01_adminack_configmap.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/0000_00_cluster-version-operator_00_namespace.yaml
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/manifests/
+deleting cvo/updatepayloads/ydfEo0NvIm7_U4CqktZoSg/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/serving-cert/tls.key
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/serving-cert/tls.crt
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/serving-cert/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/service-account-private-key/service-account.pub
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/service-account-private-key/service-account.key
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/service-account-private-key/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/localhost-recovery-client-token/token
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/localhost-recovery-client-token/service-ca.crt
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/localhost-recovery-client-token/namespace
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/localhost-recovery-client-token/ca.crt
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/localhost-recovery-client-token/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/secrets/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/serviceaccount-ca/ca-bundle.crt
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/serviceaccount-ca/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/service-ca/ca-bundle.crt
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/service-ca/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/recycler-config/recycler-pod.yaml
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/recycler-config/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/kube-controller-manager-pod/version
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/kube-controller-manager-pod/pod.yaml
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/kube-controller-manager-pod/forceRedeploymentReason
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/kube-controller-manager-pod/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/kube-controller-cert-syncer-kubeconfig/kubeconfig
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/kube-controller-cert-syncer-kubeconfig/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/controller-manager-kubeconfig/kubeconfig
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/controller-manager-kubeconfig/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/config/config.yaml
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/config/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/cluster-policy-controller-config/config.yaml
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/cluster-policy-controller-config/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/configmaps/
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/kube-controller-manager-pod.yaml
+deleting kubernetes/static-pod-resources/kube-controller-manager-pod-12/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/webhook-authenticator/kubeConfig
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/webhook-authenticator/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/localhost-recovery-serving-certkey/tls.key
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/localhost-recovery-serving-certkey/tls.crt
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/localhost-recovery-serving-certkey/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/localhost-recovery-client-token/token
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/localhost-recovery-client-token/service-ca.crt
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/localhost-recovery-client-token/namespace
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/localhost-recovery-client-token/ca.crt
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/localhost-recovery-client-token/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/etcd-client/tls.key
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/etcd-client/tls.crt
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/etcd-client/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/secrets/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/sa-token-signing-certs/service-account-002.pub
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/sa-token-signing-certs/service-account-001.pub
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/sa-token-signing-certs/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/oauth-metadata/oauthMetadata
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/oauth-metadata/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kubelet-serving-ca/ca-bundle.crt
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kubelet-serving-ca/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-server-ca/ca-bundle.crt
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-server-ca/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-pod/version
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-pod/pod.yaml
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-pod/kube-apiserver-startup-monitor-pod.yaml
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-pod/forceRedeploymentReason
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-pod/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-cert-syncer-kubeconfig/kubeconfig
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-cert-syncer-kubeconfig/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-audit-policies/policy.yaml
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/kube-apiserver-audit-policies/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/etcd-serving-ca/ca-bundle.crt
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/etcd-serving-ca/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/config/config.yaml
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/config/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/bound-sa-token-signing-certs/service-account-001.pub
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/bound-sa-token-signing-certs/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/configmaps/
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/kube-apiserver-startup-monitor-pod.yaml
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/kube-apiserver-pod.yaml
+deleting kubernetes/static-pod-resources/kube-apiserver-pod-13/
+kubernetes/cni/net.d/multus.d/multus.kubeconfig
+kubernetes/cni/net.d/whereabouts.d/whereabouts.kubeconfig
+kubernetes/static-pod-resources/kube-apiserver-last-known-good -> /etc/kubernetes/static-pod-resources/kube-apiserver-pod-12/kube-apiserver-pod.yaml
+kubernetes/static-pod-resources/kube-apiserver-pod-7/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/kube-apiserver-pod.yaml
+kubernetes/static-pod-resources/kube-apiserver-pod-7/kube-apiserver-startup-monitor-pod.yaml
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/bound-sa-token-signing-certs/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/bound-sa-token-signing-certs/service-account-001.pub
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/config/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/config/config.yaml
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/etcd-serving-ca/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/etcd-serving-ca/ca-bundle.crt
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-audit-policies/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-audit-policies/policy.yaml
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-cert-syncer-kubeconfig/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-cert-syncer-kubeconfig/kubeconfig
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-pod/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-pod/forceRedeploymentReason
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-pod/kube-apiserver-startup-monitor-pod.yaml
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-pod/pod.yaml
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-pod/version
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-server-ca/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kube-apiserver-server-ca/ca-bundle.crt
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kubelet-serving-ca/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/kubelet-serving-ca/ca-bundle.crt
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/oauth-metadata/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/oauth-metadata/oauthMetadata
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/sa-token-signing-certs/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/sa-token-signing-certs/service-account-001.pub
+kubernetes/static-pod-resources/kube-apiserver-pod-7/configmaps/sa-token-signing-certs/service-account-002.pub
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/etcd-client/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/etcd-client/tls.crt
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/etcd-client/tls.key
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/localhost-recovery-client-token/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/localhost-recovery-client-token/ca.crt
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/localhost-recovery-client-token/namespace
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/localhost-recovery-client-token/service-ca.crt
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/localhost-recovery-client-token/token
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/localhost-recovery-serving-certkey/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/localhost-recovery-serving-certkey/tls.crt
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/localhost-recovery-serving-certkey/tls.key
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/webhook-authenticator/
+kubernetes/static-pod-resources/kube-apiserver-pod-7/secrets/webhook-authenticator/kubeConfig
+machine-config-daemon/currentconfig
+openvswitch/conf.db
+pki/ca-trust/extracted/java/cacerts
+
+sent 3,875,083 bytes  received 72,603 bytes  1,579,074.40 bytes/sec
+total size is 87,627,127  speedup is 22.20
+
+real	0m1.358s
+user	0m0.353s
+sys	0m0.215s
+##### Tue Jan 18 14:25:04 UTC 2022: Completed restoring /etc content
+##### Tue Jan 18 14:25:04 UTC 2022: Restoring extra content
+##### Tue Jan 18 14:25:04 UTC 2022: Completed restoring extra content
+##### Tue Jan 18 14:25:04 UTC 2022: Restoring cluster
+etcdctl is already installed
+Deprecated: Use `etcdutl snapshot status` instead.
+
+{"hash":88738549,"revision":573157,"totalKey":9236,"totalSize":116477952}
+...stopping kube-apiserver-pod.yaml
+...stopping kube-controller-manager-pod.yaml
+...stopping kube-scheduler-pod.yaml
+...stopping etcd-pod.yaml
+Waiting for container etcd to stop
+complete
+Waiting for container etcdctl to stop
+complete
+Waiting for container etcd-metrics to stop
+complete
+Waiting for container kube-controller-manager to stop
+complete
+Waiting for container kube-apiserver to stop
+complete
+Waiting for container kube-scheduler to stop
+complete
+removing previous backup /var/lib/etcd-backup/member
+Moving etcd data-dir /var/lib/etcd/member to /var/lib/etcd-backup
+starting restore-etcd static pod
+starting kube-apiserver-pod.yaml
+static-pod-resources/kube-apiserver-pod-12/kube-apiserver-pod.yaml
+starting kube-controller-manager-pod.yaml
+static-pod-resources/kube-controller-manager-pod-11/kube-controller-manager-pod.yaml
+starting kube-scheduler-pod.yaml
+static-pod-resources/kube-scheduler-pod-10/kube-scheduler-pod.yaml
+
+real	0m1.705s
+user	0m0.228s
+sys	0m0.280s
+##### Tue Jan 18 14:25:06 UTC 2022: Restarting kubelet.service
+
+real	0m5.879s
+user	0m0.007s
+sys	0m0.017s
+##### Tue Jan 18 14:25:12 UTC 2022: Waiting for required container restarts
+##### Tue Jan 18 14:25:12 UTC 2022: Waiting for etcd container to restart
+.
+etcd is running
+##### Tue Jan 18 14:25:22 UTC 2022: etcd container restarted
+
+real	0m10.131s
+user	0m0.096s
+sys	0m0.112s
+##### Tue Jan 18 14:25:22 UTC 2022: Waiting for etcd-operator container to restart
+.....
+etcd-operator is running
+##### Tue Jan 18 14:26:12 UTC 2022: etcd-operator container restarted
+
+real	0m50.531s
+user	0m0.273s
+sys	0m0.304s
+##### Tue Jan 18 14:26:12 UTC 2022: Waiting for kube-apiserver-operator container to restart
+
+kube-apiserver-operator is running
+##### Tue Jan 18 14:26:13 UTC 2022: kube-apiserver-operator container restarted
+
+real	0m0.206s
+user	0m0.061s
+sys	0m0.065s
+##### Tue Jan 18 14:26:13 UTC 2022: Waiting for kube-controller-manager-operator container to restart
+
+kube-controller-manager-operator is running
+##### Tue Jan 18 14:26:13 UTC 2022: kube-controller-manager-operator container restarted
+
+real	0m0.223s
+user	0m0.067s
+sys	0m0.064s
+##### Tue Jan 18 14:26:13 UTC 2022: Waiting for kube-scheduler-operator-container container to restart
+.
+kube-scheduler-operator-container is running
+##### Tue Jan 18 14:26:23 UTC 2022: kube-scheduler-operator-container container restarted
+
+real	0m10.315s
+user	0m0.109s
+sys	0m0.115s
+##### Tue Jan 18 14:26:23 UTC 2022: Required containers have restarted
+##### Tue Jan 18 14:26:23 UTC 2022: Triggering redeployments
+##### Tue Jan 18 14:26:23 UTC 2022: Triggering etcd redeployment
+Patching etcd. Starting rev is 4. Expected new rev is 5.
+etcd.operator.openshift.io/cluster patched
+....................................
+etcd redeployed successfully: revision 5
+##### Tue Jan 18 14:34:16 UTC 2022: Completed etcd redeployment
+
+real	7m52.788s
+user	0m4.842s
+sys	0m2.056s
+##### Tue Jan 18 14:34:16 UTC 2022: Triggering kubeapiserver redeployment
+Patching kubeapiserver. Starting rev is 12. Expected new rev is 14.
+kubeapiserver.operator.openshift.io/cluster patched
+........
+kubeapiserver redeployed successfully: revision 14
+##### Tue Jan 18 14:36:26 UTC 2022: Completed kubeapiserver redeployment
+
+real	2m9.880s
+user	0m1.490s
+sys	0m0.621s
+##### Tue Jan 18 14:36:26 UTC 2022: Triggering kubecontrollermanager redeployment
+Patching kubecontrollermanager. Starting rev is 11. Expected new rev is 12.
+kubecontrollermanager.operator.openshift.io/cluster patched
+....
+kubecontrollermanager redeployed successfully: revision 12
+##### Tue Jan 18 14:37:07 UTC 2022: Completed kubecontrollermanager redeployment
+
+real	0m40.785s
+user	0m1.095s
+sys	0m0.417s
+##### Tue Jan 18 14:37:07 UTC 2022: Triggering kubescheduler redeployment
+Patching kubescheduler. Starting rev is 10. Expected new rev is 11.
+kubescheduler.operator.openshift.io/cluster patched
+.......
+kubescheduler redeployed successfully: revision 11
+##### Tue Jan 18 14:38:17 UTC 2022: Completed kubescheduler redeployment
+
+real	1m10.903s
+user	0m1.368s
+sys	0m0.586s
+##### Tue Jan 18 14:38:17 UTC 2022: Redeployments complete
+##### Tue Jan 18 14:38:17 UTC 2022: Recovery complete
+##### Tue Jan 18 14:38:17 UTC 2022: Displaying current status
+##### Tue Jan 18 14:38:17 UTC 2022: oc adm upgrade && oc get co && oc get nodes -o wide && oc get mcp
+Cluster version is 4.9.10
+
+Upstream is unset, so the cluster will use an appropriate default.
+Channel: stable-4.9 (available channels: candidate-4.10, candidate-4.9, fast-4.9, stable-4.9)
+Updates:
+
+VERSION IMAGE
+4.9.11  quay.io/openshift-release-dev/ocp-release@sha256:0f72e150329db15279a1aeda1286c9495258a4892bc5bf1bf5bb89942cd432de
+4.9.12  quay.io/openshift-release-dev/ocp-release@sha256:dd71b3cd08ce1e859e0e740a585827c9caa1341819d1121d92879873a127f5e2
+4.9.13  quay.io/openshift-release-dev/ocp-release@sha256:0ff5adc1199c77c2814c2030642109b24039087a2621b19e553a2315bcdc4801
+NAME                                       VERSION   AVAILABLE   PROGRESSING   DEGRADED   SINCE   MESSAGE
+authentication                             4.9.10    True        False         False      3m21s   
+baremetal                                  4.9.10    True        False         False      23h     
+cloud-controller-manager                   4.9.10    True        False         False      23h     
+cloud-credential                           4.9.10    True        False         False      23h     
+cluster-autoscaler                         4.9.10    True        False         False      23h     
+config-operator                            4.9.10    True        False         False      23h     
+console                                    4.9.10    True        False         False      23h     
+csi-snapshot-controller                    4.9.10    True        False         False      20h     
+dns                                        4.9.10    True        False         False      20h     
+etcd                                       4.9.10    True        False         False      23h     
+image-registry                             4.9.10    True        False         False      20h     
+ingress                                    4.9.10    True        False         False      23h     
+insights                                   4.9.10    True        False         False      23h     
+kube-apiserver                             4.9.10    True        False         False      23h     
+kube-controller-manager                    4.9.10    True        False         False      23h     
+kube-scheduler                             4.9.10    True        False         False      23h     
+kube-storage-version-migrator              4.9.10    True        False         False      23h     
+machine-api                                4.9.10    True        False         False      23h     
+machine-approver                           4.9.10    True        False         False      23h     
+machine-config                             4.9.10    True        False         False      23h     
+marketplace                                4.9.10    True        False         False      23h     
+monitoring                                 4.9.10    True        False         False      23h     
+network                                    4.9.10    True        False         False      23h     
+node-tuning                                4.9.10    True        False         False      17h     
+openshift-apiserver                        4.9.10    True        False         False      117s    
+openshift-controller-manager               4.9.10    True        False         False      23h     
+openshift-samples                          4.9.10    True        False         False      17h     
+operator-lifecycle-manager                 4.9.10    True        False         False      23h     
+operator-lifecycle-manager-catalog         4.9.10    True        False         False      23h     
+operator-lifecycle-manager-packageserver   4.9.10    True        False         False      18h     
+service-ca                                 4.9.10    True        False         False      23h     
+storage                                    4.9.10    True        False         False      23h     
+NAME                                     STATUS   ROLES           AGE   VERSION           INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                                                       KERNEL-VERSION                 CONTAINER-RUNTIME
+cnfdf01.telco5gran.eng.rdu2.redhat.com   Ready    master,worker   23h   v1.22.3+ffbb954   10.8.34.11    <none>        Red Hat Enterprise Linux CoreOS 49.84.202111292103-0 (Ootpa)   4.18.0-305.28.1.el8_4.x86_64   cri-o://1.22.1-7.rhaos4.9.git8ed8e79.el8
+NAME     CONFIG                                             UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINECOUNT   DEGRADEDMACHINECOUNT   AGE
+master   rendered-master-91a1312257df18f8feb5b43abd322594   True      False      False      1              1                   1                     0                      23h
+worker   rendered-worker-9b247bc38a83a2754e6ea7097558ad5d   True      False      False      0              0                   0                     0                      23h
+##### Tue Jan 18 14:38:18 UTC 2022: Done
