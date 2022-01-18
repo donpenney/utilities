@@ -155,6 +155,66 @@ function trigger_redeployment {
 }
 
 #
+# take_backup:
+# Procedure for backing up data prior to upgrade
+#
+function take_backup {
+    echo "##### $(date -u): Taking backup"
+
+    echo "##### $(date -u): Cleaning completed pods"
+    oc delete pod --field-selector=status.phase==Succeeded --all-namespaces
+
+    echo "##### $(date -u): Wiping previous deployments and pinning active"
+    while :; do
+        ostree admin undeploy 1 || break
+    done
+    ostree admin pin 0
+    if [ $? -ne 0 ]; then
+        echo "Failed to pin active deployment" >&2
+        exit 1
+    fi
+
+    echo "##### $(date -u): Backing up container images, cluster, and required files"
+    # Note: The cluster-restore script uses a hardcoded path for manifests-stopped dir
+    rm -rf ${BACKUP_DIR} /home/core/assets/manifests-stopped
+
+    time for id in $(crictl images -o json | jq -r '.images[].id'); do
+        mkdir -p ${BACKUP_DIR}/containers/$id
+        /usr/bin/skopeo copy --all --insecure-policy containers-storage:$id dir:${BACKUP_DIR}/containers/$id
+    done
+
+    /usr/local/bin/cluster-backup.sh ${BACKUP_DIR}/cluster
+    if [ $? -ne 0 ]; then
+        echo "Cluster backup failed" >&2
+        exit 1
+    fi
+
+    cat /etc/tmpfiles.d/* | sed 's/#.*//' | awk '{print $2}' | grep '^/etc/' | sed 's#^/etc/##' > ${BACKUP_DIR}/etc.exclude.list
+    echo '.updated' >> ${BACKUP_DIR}/etc.exclude.list
+    echo 'kubernetes/manifests' >> ${BACKUP_DIR}/etc.exclude.list
+    rsync -a /etc/ ${BACKUP_DIR}/etc/
+    if [ $? -ne 0 ]; then
+        echo "Failed to backup /etc" >&2
+        exit 1
+    fi
+
+    rsync -a /usr/local/ ${BACKUP_DIR}/usrlocal/
+    if [ $? -ne 0 ]; then
+        echo "Failed to backup /usr/local" >&2
+        exit 1
+    fi
+
+    oc get mc -o=jsonpath='{range .items[*]}{range .spec.config.storage.files[*]}{.path}{"\n"}' | sort -u \
+        | grep -v -e '^/etc/' -e '^/usr/local/' -e '^$' | xargs --no-run-if-empty tar czf ${BACKUP_DIR}/extras.tgz
+    if [ $? -ne 0 ]; then
+        echo "Failed to backup additional managed files" >&2
+        exit 1
+    fi
+
+    echo "##### $(date -u): Backup complete"
+}
+
+#
 # Process command-line arguments
 #
 declare BACKUP_DIR="/var/recovery"
@@ -163,8 +223,9 @@ declare REDEPLOYMENT_TIMEOUT=1200 # 20 minutes
 declare SKIP_DEPLOY_CHECK="no"
 declare SKIP_IMAGE_RESTORE="no"
 declare SKIP_WIPE="no"
+declare TAKE_BACKUP="no"
 
-LONGOPTS="dir:,force,skip-wipe,skip-images"
+LONGOPTS="dir:,force,skip-wipe,skip-images,take-backup"
 OPTS=$(getopt -o h --long "${LONGOPTS}" --name "$0" -- "$@")
 
 if [ $? -ne 0 ]; then
@@ -193,6 +254,10 @@ while :; do
             SKIP_WIPE="yes"
             shift
             ;;
+        --take-backup)
+            TAKE_BACKUP="yes"
+            shift
+            ;;
         --)
             shift
             break
@@ -205,13 +270,24 @@ while :; do
 done
 
 #
-# Validate environment and arguments
+# Validate environment
 #
 if [ -z "${KUBECONFIG}" ] || [ ! -r "${KUBECONFIG}" ]; then
     echo "Please provide kubeconfig location in KUBECONFIG env variable" >&2
     exit 1
 fi
 
+#
+# Perform backup and exit, if requested
+#
+if [ "${TAKE_BACKUP}" = "yes" ]; then
+    take_backup
+    exit 0
+fi
+
+#
+# Validate arguments
+#
 if [ ! -d "${BACKUP_DIR}/cluster" ] || \
         [ ! -d "${BACKUP_DIR}/containers" ] || \
         [ ! -d "${BACKUP_DIR}/etc" ] || \
