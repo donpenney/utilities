@@ -1,6 +1,17 @@
 #!/bin/bash
 #
 # This script manages post-rollback recovery.
+# This utility runs after the platform has been rolled back with "rpm-ostree rollback -r", if needed.
+#
+
+#
+# References:
+#
+# Cluster recovery procedure is based on the following:
+# https://docs.openshift.com/container-platform/4.9/backup_and_restore/control_plane_backup_and_restore/disaster_recovery/scenario-2-restoring-cluster-state.html
+#
+# CRI-O wipe procedure is based on the following:
+# https://docs.openshift.com/container-platform/4.9/support/troubleshooting/troubleshooting-crio-issues.html#cleaning-crio-storage
 #
 
 declare PROG=
@@ -14,10 +25,15 @@ Options:
     --dir <dir>:    Location of backup content
     --force:        Skip ostree deployment check
     --skip-images:  Skip restore of container images
+    --skip-wipe:    Skip crio wipe step
 ENDUSAGE
     exit 1
 }
 
+#
+# display_current_status:
+# For informational purposes only
+#
 function display_current_status {
     echo "##### $(date -u): Displaying current status"
 
@@ -46,6 +62,11 @@ function get_latest_available_revision {
     oc get "${name}" -o=jsonpath='{.items[0].status.latestAvailableRevision}{"\n"}' 2>/dev/null
 }
 
+#
+# wait_for_container_restart:
+# Polls container status, waiting until the specified container has been
+# launched or restarted and in a Running state
+#
 function wait_for_container_restart {
     local name=$1
     local orig_id=$2
@@ -77,6 +98,11 @@ function wait_for_container_restart {
     echo "##### $(date -u): ${name} container restarted"
 }
 
+#
+# trigger_redeployment:
+# Patches a given resource to trigger a new revision, and polls until
+# redeployment is complete
+#
 function trigger_redeployment {
     local name=$1
     local timeout=
@@ -128,6 +154,9 @@ function trigger_redeployment {
     echo "##### $(date -u): Completed ${name} redeployment"
 }
 
+#
+# Process command-line arguments
+#
 declare BACKUP_DIR="/var/recovery"
 declare RESTART_TIMEOUT=1200 # 20 minutes
 declare REDEPLOYMENT_TIMEOUT=1200 # 20 minutes
@@ -175,6 +204,9 @@ while :; do
     esac
 done
 
+#
+# Validate environment and arguments
+#
 if [ -z "${KUBECONFIG}" ] || [ ! -r "${KUBECONFIG}" ]; then
     echo "Please provide kubeconfig location in KUBECONFIG env variable" >&2
     exit 1
@@ -188,6 +220,9 @@ if [ ! -d "${BACKUP_DIR}/cluster" ] || \
     exit 1
 fi
 
+#
+# If the current deployment is not pinned, assume the platform has not been rolled back
+#
 if ! ostree admin status | grep -A 3 '^\*' | grep -q 'Pinned: yes'; then
     if [ "${SKIP_DEPLOY_CHECK}" = "yes" ]; then
         echo "Warning: Active ostree deployment is not pinned and should be rolled back."
@@ -199,6 +234,10 @@ fi
 
 display_current_status
 
+#
+# Wipe current containers by shutting down kubelet, deleting containers and pods,
+# then stopping and wiping crio
+#
 if [ "${SKIP_WIPE}" = "no" ]; then
     echo "##### $(date -u): Wiping existing containers"
     systemctl stop kubelet.service
@@ -208,8 +247,10 @@ if [ "${SKIP_WIPE}" = "no" ]; then
     echo "##### $(date -u): Completed wipe"
 fi
 
+#
+# Restore container images
+#
 if [ "${SKIP_IMAGE_RESTORE}" = "no" ]; then
-    # Restore container images
     echo "##### $(date -u): Restoring container images"
     time for id in $(find ${BACKUP_DIR}/containers -mindepth 1 -maxdepth 2 -type d); do
         /usr/bin/skopeo copy dir:$id containers-storage:local/$(basename $id)
@@ -217,7 +258,9 @@ if [ "${SKIP_IMAGE_RESTORE}" = "no" ]; then
     echo "##### $(date -u): Completed restoring container images"
 fi
 
+#
 # Restore /usr/local content
+#
 echo "##### $(date -u): Restoring /usr/local content"
 time rsync -avc --delete --no-t ${BACKUP_DIR}/usrlocal/ /usr/local/
 if [ $? -ne 0 ]; then
@@ -226,7 +269,9 @@ if [ $? -ne 0 ]; then
 fi
 echo "##### $(date -u): Completed restoring /etc content"
 
+#
 # Restore /etc content
+#
 echo "##### $(date -u): Restoring /etc content"
 time rsync -avc --delete --no-t --exclude-from ${BACKUP_DIR}/etc.exclude.list ${BACKUP_DIR}/etc/ /etc/
 if [ $? -ne 0 ]; then
@@ -235,6 +280,9 @@ if [ $? -ne 0 ]; then
 fi
 echo "##### $(date -u): Completed restoring /etc content"
 
+#
+# Restore additional machine-config managed files
+#
 if [ -f ${BACKUP_DIR}/extras.tgz ]; then
     echo "##### $(date -u): Restoring extra content"
     tar xzf ${BACKUP_DIR}/extras.tgz -C /
@@ -245,20 +293,31 @@ if [ -f ${BACKUP_DIR}/extras.tgz ]; then
     echo "##### $(date -u): Completed restoring extra content"
 fi
 
+#
+# As systemd files may have been updated as part of the preceding restores,
+# run daemon-reload
+#
 systemctl daemon-reload
 
+#
+# Restart crio
+#
 if [ "${SKIP_WIPE}" = "no" ]; then
     systemctl start crio.service
 fi
 
+#
 # Get current container IDs
+#
 ORIG_ETCD_CONTAINER_ID=$(get_container_id etcd)
 ORIG_ETCD_OPERATOR_CONTAINER_ID=$(get_container_id etcd-operator)
 ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID=$(get_container_id kube-apiserver-operator)
 ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID=$(get_container_id kube-controller-manager-operator)
 ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID=$(get_container_id kube-scheduler-operator-container)
 
+#
 # Restore cluster
+#
 echo "##### $(date -u): Restoring cluster"
 time /usr/local/bin/cluster-restore.sh ${BACKUP_DIR}/cluster
 if [ $? -ne 0 ]; then
@@ -274,6 +333,9 @@ if [ "${SKIP_WIPE}" = "yes" ]; then
     time systemctl restart crio.service
 fi
 
+#
+# Wait for containers to launch or restart after cluster restore
+#
 echo "##### $(date -u): Waiting for required container restarts"
 
 time wait_for_container_restart etcd "${ORIG_ETCD_CONTAINER_ID}" ${RESTART_TIMEOUT}
@@ -284,6 +346,9 @@ time wait_for_container_restart kube-scheduler-operator-container "${ORIG_KUBE_S
 
 echo "##### $(date -u): Required containers have restarted"
 
+#
+# Trigger required resource redeployments
+#
 echo "##### $(date -u): Triggering redeployments"
 
 time trigger_redeployment etcd ${REDEPLOYMENT_TIMEOUT}
