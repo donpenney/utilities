@@ -178,6 +178,8 @@ function take_backup {
     # Note: The cluster-restore script uses a hardcoded path for manifests-stopped dir
     rm -rf ${BACKUP_DIR} /home/core/assets/manifests-stopped
 
+    mkdir -p ${BACKUP_DIR}
+
     time for id in $(crictl images -o json | jq -r '.images[].id'); do
         mkdir -p ${BACKUP_DIR}/containers/$id
         /usr/bin/skopeo copy --all --insecure-policy containers-storage:$id dir:${BACKUP_DIR}/containers/$id
@@ -204,6 +206,19 @@ function take_backup {
         exit 1
     fi
 
+    #
+    # DPENNEY NOTE: I have /var/lib/kubelet included in the B&R, but it may not be needed.
+    # Adding it did not resolve the problem I was trying to resolve
+    # (rendered-master mc issue on rollback from 4.10 to 4.9)
+    #
+    # If we decide to keep it, we can update the "extras" exclusions in the next command
+    #
+    rsync -a /var/lib/kubelet/ ${BACKUP_DIR}/kubelet/
+    if [ $? -ne 0 ]; then
+        echo "Failed to backup /var/lib/kubelet" >&2
+        exit 1
+    fi
+
     oc get mc -o=jsonpath='{range .items[*]}{range .spec.config.storage.files[*]}{.path}{"\n"}' | sort -u \
         | grep -v -e '^/etc/' -e '^/usr/local/' -e '^$' | xargs --no-run-if-empty tar czf ${BACKUP_DIR}/extras.tgz
     if [ $? -ne 0 ]; then
@@ -212,6 +227,204 @@ function take_backup {
     fi
 
     echo "##### $(date -u): Backup complete"
+}
+
+function is_restore_in_progress {
+    test -f "${PROGRESS_FILE}"
+}
+
+function record_progress {
+    grep -q "^$1$" "${PROGRESS_FILE}" 2>/dev/null || echo "$1" >> "${PROGRESS_FILE}"
+}
+
+function check_progress {
+    grep -q "^$1$" "${PROGRESS_FILE}" 2>/dev/null
+}
+
+function clear_progress {
+    rm -f "${PROGRESS_FILE}"
+}
+
+function restore_images_and_files {
+    local REBOOT_REQUIRED="no"
+
+    #
+    # If the current deployment is not pinned, assume the platform has not been rolled back
+    #
+    if ! ostree admin status | grep -A 3 '^\*' | grep -q 'Pinned: yes'; then
+        if [ "${SKIP_DEPLOY_CHECK}" = "yes" ]; then
+            echo "Warning: Active ostree deployment is not pinned and should be rolled back."
+        else
+            echo "Active ostree deployment is not pinned and should be rolled back." >&2
+            exit 1
+        fi
+    fi
+
+    display_current_status
+
+    #
+    # Wipe current containers by shutting down kubelet, deleting containers and pods,
+    # then stopping and wiping crio
+    #
+    if [ "${SKIP_WIPE}" = "no" ]; then
+        echo "##### $(date -u): Wiping existing containers"
+        systemctl stop kubelet.service
+        crictl rmp -fa
+        systemctl stop crio.service
+        crio wipe -f
+        echo "##### $(date -u): Completed wipe"
+    fi
+
+    #
+    # Restore container images
+    #
+    if [ "${SKIP_IMAGE_RESTORE}" = "no" ]; then
+        echo "##### $(date -u): Restoring container images"
+        time for id in $(find ${BACKUP_DIR}/containers -mindepth 1 -maxdepth 2 -type d); do
+            /usr/bin/skopeo copy dir:$id containers-storage:local/$(basename $id)
+        done
+        echo "##### $(date -u): Completed restoring container images"
+    fi
+
+    #
+    # Restore /usr/local content
+    #
+    echo "##### $(date -u): Restoring /usr/local content"
+    time rsync -avc --delete --no-t ${BACKUP_DIR}/usrlocal/ /usr/local/
+    if [ $? -ne 0 ]; then
+        echo "$(date -u): Failed to restore /usr/local content" >&2
+        exit 1
+    fi
+    echo "##### $(date -u): Completed restoring /usr/local content"
+
+    #
+    # Restore /var/lib/kubelet content
+    #
+    echo "##### $(date -u): Restoring /var/lib/kubelet content"
+    time rsync -avc --delete --no-t ${BACKUP_DIR}/kubelet/ /var/lib/kubelet/
+    if [ $? -ne 0 ]; then
+        echo "$(date -u): Failed to restore /var/lib/kubelet content" >&2
+        exit 1
+    fi
+    echo "##### $(date -u): Completed restoring /var/lib/kubelet content"
+
+    #
+    # Check for /etc changes requiring a reboot
+    #
+    rsync --out-format="%n" -ac --delete --no-t --exclude-from ${BACKUP_DIR}/etc.exclude.list ${BACKUP_DIR}/etc/ /etc/ \
+        | grep -q -e '^NetworkManager'
+    if [ $? -eq 0 ]; then
+        REBOOT_REQUIRED="yes"
+    fi
+
+    #
+    # Restore /etc content
+    #
+    echo "##### $(date -u): Restoring /etc content"
+    time rsync -avc --delete --no-t --exclude-from ${BACKUP_DIR}/etc.exclude.list ${BACKUP_DIR}/etc/ /etc/
+    if [ $? -ne 0 ]; then
+        echo "$(date -u): Failed to restore /etc content" >&2
+        exit 1
+    fi
+    echo "##### $(date -u): Completed restoring /etc content"
+
+    #
+    # Restore additional machine-config managed files
+    #
+    if [ -f ${BACKUP_DIR}/extras.tgz ]; then
+        echo "##### $(date -u): Restoring extra content"
+        tar xzf ${BACKUP_DIR}/extras.tgz -C /
+        if [ $? -ne 0 ]; then
+            echo "$(date -u): Failed to restore extra content" >&2
+            exit 1
+        fi
+        echo "##### $(date -u): Completed restoring extra content"
+    fi
+
+    #
+    # As systemd files may have been updated as part of the preceding restores,
+    # run daemon-reload
+    #
+    systemctl daemon-reload
+
+    record_progress "restore_images_and_files"
+
+    if [ "${REBOOT_REQUIRED}" = "yes" ]; then
+        systemctl disable kubelet.service
+        echo "Some files restored require a reboot. Please reboot now, then use ${PROG} --resume option" >&2
+        exit 0
+    fi
+}
+
+function restore_cluster {
+    #
+    # Start crio, if needed
+    #
+    if ! systemctl -q is-active crio.service; then
+        echo "##### $(date -u): Starting crio.service"
+        systemctl start crio.service
+    fi
+
+    #
+    # Get current container IDs
+    #
+    ORIG_ETCD_CONTAINER_ID=$(get_container_id etcd)
+    ORIG_ETCD_OPERATOR_CONTAINER_ID=$(get_container_id etcd-operator)
+    ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID=$(get_container_id kube-apiserver-operator)
+    ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID=$(get_container_id kube-controller-manager-operator)
+    ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID=$(get_container_id kube-scheduler-operator-container)
+
+    #
+    # Restore cluster
+    #
+    echo "##### $(date -u): Restoring cluster"
+    time /usr/local/bin/cluster-restore.sh ${BACKUP_DIR}/cluster
+    if [ $? -ne 0 ]; then
+        echo "$(date -u): Failed to restore cluster" >&2
+        exit 1
+    fi
+
+    echo "##### $(date -u): Restarting kubelet.service"
+    time systemctl restart kubelet.service
+    systemctl enable kubelet.service
+
+    if [ "${SKIP_WIPE}" = "yes" ]; then
+        echo "##### $(date -u): Restarting crio.service"
+        time systemctl restart crio.service
+    fi
+
+    #
+    # Wait for containers to launch or restart after cluster restore
+    #
+    echo "##### $(date -u): Waiting for required container restarts"
+
+    time wait_for_container_restart etcd "${ORIG_ETCD_CONTAINER_ID}" ${RESTART_TIMEOUT}
+    time wait_for_container_restart etcd-operator "${ORIG_ETCD_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+    time wait_for_container_restart kube-apiserver-operator "${ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+    time wait_for_container_restart kube-controller-manager-operator "${ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+    time wait_for_container_restart kube-scheduler-operator-container "${ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
+
+    echo "##### $(date -u): Required containers have restarted"
+
+    record_progress "restore_cluster"
+}
+
+function post_restore_steps {
+    #
+    # Trigger required resource redeployments
+    #
+    echo "##### $(date -u): Triggering redeployments"
+
+    time trigger_redeployment etcd ${REDEPLOYMENT_TIMEOUT}
+    time trigger_redeployment kubeapiserver ${REDEPLOYMENT_TIMEOUT}
+    time trigger_redeployment kubecontrollermanager ${REDEPLOYMENT_TIMEOUT}
+    time trigger_redeployment kubescheduler ${REDEPLOYMENT_TIMEOUT}
+
+    echo "##### $(date -u): Redeployments complete"
+
+    echo "##### $(date -u): Recovery complete"
+
+    display_current_status
 }
 
 #
@@ -224,8 +437,10 @@ declare SKIP_DEPLOY_CHECK="no"
 declare SKIP_IMAGE_RESTORE="no"
 declare SKIP_WIPE="no"
 declare TAKE_BACKUP="no"
+declare STEPTHROUGH="no"
+declare RESUME="no"
 
-LONGOPTS="dir:,force,skip-wipe,skip-images,take-backup"
+LONGOPTS="dir:,force,restart,resume,skip-images,skip-wipe,step,take-backup"
 OPTS=$(getopt -o h --long "${LONGOPTS}" --name "$0" -- "$@")
 
 if [ $? -ne 0 ]; then
@@ -245,6 +460,14 @@ while :; do
             SKIP_DEPLOY_CHECK="yes"
             shift
             ;;
+        --restart)
+            STEPTHROUGH_RESET="yes"
+            shift
+            ;;
+        --resume)
+            RESUME="yes"
+            shift
+            ;;
         --skip-images)
             SKIP_IMAGE_RESTORE="yes"
             SKIP_WIPE="yes"
@@ -252,6 +475,10 @@ while :; do
             ;;
         --skip-wipe)
             SKIP_WIPE="yes"
+            shift
+            ;;
+        --step)
+            STEPTHROUGH="yes"
             shift
             ;;
         --take-backup)
@@ -268,6 +495,8 @@ while :; do
             ;;
     esac
 done
+
+declare PROGRESS_FILE="${BACKUP_DIR}/progress"
 
 #
 # Validate environment
@@ -291,150 +520,50 @@ fi
 if [ ! -d "${BACKUP_DIR}/cluster" ] || \
         [ ! -d "${BACKUP_DIR}/containers" ] || \
         [ ! -d "${BACKUP_DIR}/etc" ] || \
-        [ ! -d "${BACKUP_DIR}/usrlocal" ]; then
+        [ ! -d "${BACKUP_DIR}/usrlocal" ] || \
+        [ ! -d "${BACKUP_DIR}/kubelet" ]; then
     echo "Required backup content not found in ${BACKUP_DIR}" >&2
     exit 1
 fi
 
 #
-# If the current deployment is not pinned, assume the platform has not been rolled back
+# Clear progress flag, if requested
 #
-if ! ostree admin status | grep -A 3 '^\*' | grep -q 'Pinned: yes'; then
-    if [ "${SKIP_DEPLOY_CHECK}" = "yes" ]; then
-        echo "Warning: Active ostree deployment is not pinned and should be rolled back."
-    else
-        echo "Active ostree deployment is not pinned and should be rolled back." >&2
-        exit 1
+if [ "${STEPTHROUGH_RESET}" = "yes" ]; then
+    clear_progress
+fi
+
+#
+# Check whether a restore has already started
+#
+if [ "${RESUME}" = "no" ] && [ "${STEPTHROUGH}" = "no" ] && is_restore_in_progress; then
+    echo "Restore has already started. Use --restart option to restart, or --step to resume" >&1
+    exit 1
+fi
+
+record_progress "started"
+
+if ! check_progress "restore_images_and_files"; then
+    restore_images_and_files
+
+    if [ "${STEPTHROUGH}" = "yes" ]; then
+        echo "##### $(date -u): Stage complete. Use --step option to resume."
+        exit 0
     fi
 fi
 
-display_current_status
+if ! check_progress "restore_cluster"; then
+    restore_cluster
 
-#
-# Wipe current containers by shutting down kubelet, deleting containers and pods,
-# then stopping and wiping crio
-#
-if [ "${SKIP_WIPE}" = "no" ]; then
-    echo "##### $(date -u): Wiping existing containers"
-    systemctl stop kubelet.service
-    crictl rmp -fa
-    systemctl stop crio.service
-    crio wipe -f
-    echo "##### $(date -u): Completed wipe"
-fi
-
-#
-# Restore container images
-#
-if [ "${SKIP_IMAGE_RESTORE}" = "no" ]; then
-    echo "##### $(date -u): Restoring container images"
-    time for id in $(find ${BACKUP_DIR}/containers -mindepth 1 -maxdepth 2 -type d); do
-        /usr/bin/skopeo copy dir:$id containers-storage:local/$(basename $id)
-    done
-    echo "##### $(date -u): Completed restoring container images"
-fi
-
-#
-# Restore /usr/local content
-#
-echo "##### $(date -u): Restoring /usr/local content"
-time rsync -avc --delete --no-t ${BACKUP_DIR}/usrlocal/ /usr/local/
-if [ $? -ne 0 ]; then
-    echo "$(date -u): Failed to restore /usr/local content" >&2
-    exit 1
-fi
-echo "##### $(date -u): Completed restoring /etc content"
-
-#
-# Restore /etc content
-#
-echo "##### $(date -u): Restoring /etc content"
-time rsync -avc --delete --no-t --exclude-from ${BACKUP_DIR}/etc.exclude.list ${BACKUP_DIR}/etc/ /etc/
-if [ $? -ne 0 ]; then
-    echo "$(date -u): Failed to restore /etc content" >&2
-    exit 1
-fi
-echo "##### $(date -u): Completed restoring /etc content"
-
-#
-# Restore additional machine-config managed files
-#
-if [ -f ${BACKUP_DIR}/extras.tgz ]; then
-    echo "##### $(date -u): Restoring extra content"
-    tar xzf ${BACKUP_DIR}/extras.tgz -C /
-    if [ $? -ne 0 ]; then
-        echo "$(date -u): Failed to restore extra content" >&2
-        exit 1
+    if [ "${STEPTHROUGH}" = "yes" ]; then
+        echo "##### $(date -u): Stage complete. Use --step option to resume."
+        exit 0
     fi
-    echo "##### $(date -u): Completed restoring extra content"
 fi
 
-#
-# As systemd files may have been updated as part of the preceding restores,
-# run daemon-reload
-#
-systemctl daemon-reload
-
-#
-# Restart crio
-#
-if [ "${SKIP_WIPE}" = "no" ]; then
-    systemctl start crio.service
-fi
-
-#
-# Get current container IDs
-#
-ORIG_ETCD_CONTAINER_ID=$(get_container_id etcd)
-ORIG_ETCD_OPERATOR_CONTAINER_ID=$(get_container_id etcd-operator)
-ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID=$(get_container_id kube-apiserver-operator)
-ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID=$(get_container_id kube-controller-manager-operator)
-ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID=$(get_container_id kube-scheduler-operator-container)
-
-#
-# Restore cluster
-#
-echo "##### $(date -u): Restoring cluster"
-time /usr/local/bin/cluster-restore.sh ${BACKUP_DIR}/cluster
-if [ $? -ne 0 ]; then
-    echo "$(date -u): Failed to restore cluster" >&2
-    exit 1
-fi
-
-echo "##### $(date -u): Restarting kubelet.service"
-time systemctl restart kubelet.service
-
-if [ "${SKIP_WIPE}" = "yes" ]; then
-    echo "##### $(date -u): Restarting crio.service"
-    time systemctl restart crio.service
-fi
-
-#
-# Wait for containers to launch or restart after cluster restore
-#
-echo "##### $(date -u): Waiting for required container restarts"
-
-time wait_for_container_restart etcd "${ORIG_ETCD_CONTAINER_ID}" ${RESTART_TIMEOUT}
-time wait_for_container_restart etcd-operator "${ORIG_ETCD_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
-time wait_for_container_restart kube-apiserver-operator "${ORIG_KUBE_APISERVER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
-time wait_for_container_restart kube-controller-manager-operator "${ORIG_KUBE_CONTROLLER_MANAGER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
-time wait_for_container_restart kube-scheduler-operator-container "${ORIG_KUBE_SCHEDULER_OPERATOR_CONTAINER_ID}" ${RESTART_TIMEOUT}
-
-echo "##### $(date -u): Required containers have restarted"
-
-#
-# Trigger required resource redeployments
-#
-echo "##### $(date -u): Triggering redeployments"
-
-time trigger_redeployment etcd ${REDEPLOYMENT_TIMEOUT}
-time trigger_redeployment kubeapiserver ${REDEPLOYMENT_TIMEOUT}
-time trigger_redeployment kubecontrollermanager ${REDEPLOYMENT_TIMEOUT}
-time trigger_redeployment kubescheduler ${REDEPLOYMENT_TIMEOUT}
-
-echo "##### $(date -u): Redeployments complete"
+post_restore_steps
 
 echo "##### $(date -u): Recovery complete"
 
-display_current_status
+clear_progress
 
