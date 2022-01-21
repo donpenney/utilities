@@ -1,0 +1,178 @@
+##### Fri Jan 21 20:58:30 UTC 2022: Starting crio.service
+##### Fri Jan 21 20:58:30 UTC 2022: Restoring cluster
+etcdctl is already installed
+Deprecated: Use `etcdutl snapshot status` instead.
+
+{"hash":2837704391,"revision":356095,"totalKey":15327,"totalSize":111091712}
+...stopping kube-apiserver-pod.yaml
+...stopping kube-controller-manager-pod.yaml
+...stopping kube-scheduler-pod.yaml
+...stopping etcd-pod.yaml
+Waiting for container etcd to stop
+complete
+Waiting for container etcdctl to stop
+complete
+Waiting for container etcd-metrics to stop
+complete
+Waiting for container kube-controller-manager to stop
+complete
+Waiting for container kube-apiserver to stop
+complete
+Waiting for container kube-scheduler to stop
+complete
+removing previous backup /var/lib/etcd-backup/member
+Moving etcd data-dir /var/lib/etcd/member to /var/lib/etcd-backup
+starting restore-etcd static pod
+starting kube-apiserver-pod.yaml
+static-pod-resources/kube-apiserver-pod-9/kube-apiserver-pod.yaml
+starting kube-controller-manager-pod.yaml
+static-pod-resources/kube-controller-manager-pod-9/kube-controller-manager-pod.yaml
+starting kube-scheduler-pod.yaml
+static-pod-resources/kube-scheduler-pod-9/kube-scheduler-pod.yaml
+
+real	0m2.274s
+user	0m0.173s
+sys	0m0.446s
+##### Fri Jan 21 20:58:33 UTC 2022: Restarting kubelet.service
+
+real	0m6.743s
+user	0m0.014s
+sys	0m0.010s
+Created symlink /etc/systemd/system/multi-user.target.wants/kubelet.service → /etc/systemd/system/kubelet.service.
+##### Fri Jan 21 20:58:40 UTC 2022: Waiting for required container restarts
+##### Fri Jan 21 20:58:40 UTC 2022: Waiting for etcd container to restart
+.
+etcd is running
+##### Fri Jan 21 20:58:50 UTC 2022: etcd container restarted
+
+real	0m10.210s
+user	0m0.082s
+sys	0m0.087s
+##### Fri Jan 21 20:58:50 UTC 2022: Waiting for etcd-operator container to restart
+......................................
+etcd-operator is running
+##### Fri Jan 21 21:05:31 UTC 2022: etcd-operator container restarted
+
+real	6m41.324s
+user	0m1.602s
+sys	0m2.299s
+##### Fri Jan 21 21:05:31 UTC 2022: Waiting for kube-apiserver-operator container to restart
+
+kube-apiserver-operator is running
+##### Fri Jan 21 21:05:32 UTC 2022: kube-apiserver-operator container restarted
+
+real	0m0.682s
+user	0m0.084s
+sys	0m0.150s
+##### Fri Jan 21 21:05:32 UTC 2022: Waiting for kube-controller-manager-operator container to restart
+
+kube-controller-manager-operator is running
+##### Fri Jan 21 21:05:32 UTC 2022: kube-controller-manager-operator container restarted
+
+real	0m0.493s
+user	0m0.091s
+sys	0m0.089s
+##### Fri Jan 21 21:05:32 UTC 2022: Waiting for kube-scheduler-operator-container container to restart
+
+kube-scheduler-operator-container is running
+##### Fri Jan 21 21:05:33 UTC 2022: kube-scheduler-operator-container container restarted
+
+real	0m0.453s
+user	0m0.069s
+sys	0m0.099s
+##### Fri Jan 21 21:05:33 UTC 2022: Required containers have restarted
+##### Fri Jan 21 21:05:33 UTC 2022: Triggering redeployments
+##### Fri Jan 21 21:05:33 UTC 2022: Triggering etcd redeployment
+Patching etcd. Starting rev is 3. Expected new rev is 4.
+etcd.operator.openshift.io/cluster patched
+.....................................................
+etcd redeployed successfully: revision 4
+##### Fri Jan 21 21:17:35 UTC 2022: Completed etcd redeployment
+
+real	12m2.380s
+user	0m10.133s
+sys	0m3.293s
+##### Fri Jan 21 21:17:35 UTC 2022: Triggering kubeapiserver redeployment
+Patching kubeapiserver. Starting rev is 9. Expected new rev is 11.
+kubeapiserver.operator.openshift.io/cluster patched
+.......................
+kubeapiserver redeployed successfully: revision 11
+##### Fri Jan 21 21:23:09 UTC 2022: Completed kubeapiserver redeployment
+
+real	5m33.922s
+user	0m4.702s
+sys	0m1.440s
+##### Fri Jan 21 21:23:09 UTC 2022: Triggering kubecontrollermanager redeployment
+Patching kubecontrollermanager. Starting rev is 9. Expected new rev is 10.
+kubecontrollermanager.operator.openshift.io/cluster patched
+.........
+kubecontrollermanager redeployed successfully: revision 10
+##### Fri Jan 21 21:24:45 UTC 2022: Completed kubecontrollermanager redeployment
+
+real	1m36.179s
+user	0m2.056s
+sys	0m0.685s
+##### Fri Jan 21 21:24:45 UTC 2022: Triggering kubescheduler redeployment
+Patching kubescheduler. Starting rev is 9. Expected new rev is 10.
+kubescheduler.operator.openshift.io/cluster patched
+.........
+kubescheduler redeployed successfully: revision 10
+##### Fri Jan 21 21:26:20 UTC 2022: Completed kubescheduler redeployment
+
+real	1m35.001s
+user	0m1.925s
+sys	0m0.621s
+##### Fri Jan 21 21:26:20 UTC 2022: Redeployments complete
+##### Fri Jan 21 21:26:20 UTC 2022: Recovery complete
+##### Fri Jan 21 21:26:20 UTC 2022: Displaying current status
+##### Fri Jan 21 21:26:20 UTC 2022: oc adm upgrade && oc get co && oc get nodes -o wide && oc get mcp
+Cluster version is 4.9.13
+
+Upgradeable=False
+
+  Reason: DegradedPool
+  Message: Cluster operator machine-config should not be upgraded between minor versions: One or more machine config pools are degraded, please see `oc get mcp` for further details and resolve before upgrading
+
+Upstream is unset, so the cluster will use an appropriate default.
+Channel: stable-4.9 (available channels: candidate-4.10, candidate-4.9, fast-4.9, stable-4.9)
+No updates available. You may force an upgrade to a specific release image, but doing so may not be supported and may result in downtime or data loss.
+NAME                                       VERSION   AVAILABLE   PROGRESSING   DEGRADED   SINCE   MESSAGE
+authentication                             4.9.13    True        False         False      17m     
+baremetal                                  4.9.13    True        False         False      20h     
+cloud-controller-manager                   4.9.13    True        False         False      20h     
+cloud-credential                           4.9.13    True        False         False      20h     
+cluster-autoscaler                         4.9.13    True        False         False      20h     
+config-operator                            4.9.13    True        False         False      20h     
+console                                    4.9.13    True        False         False      20h     
+csi-snapshot-controller                    4.9.13    True        False         False      18m     
+dns                                        4.9.13    True        False         False      5h14m   
+etcd                                       4.9.13    True        False         False      20h     
+image-registry                             4.9.13    True        False         False      20h     
+ingress                                    4.9.13    True        False         False      20h     
+insights                                   4.9.13    True        False         False      20h     
+kube-apiserver                             4.9.13    True        False         False      20h     
+kube-controller-manager                    4.9.13    True        False         False      20h     
+kube-scheduler                             4.9.13    True        False         False      20h     
+kube-storage-version-migrator              4.9.13    True        False         False      20h     
+machine-api                                4.9.13    True        False         False      20h     
+machine-approver                           4.9.13    True        False         False      20h     
+machine-config                             4.9.13    False       False         True       85s     Cluster not available for 4.9.13
+marketplace                                4.9.13    True        False         False      20h     
+monitoring                                 4.9.13    True        False         False      3h46m   
+network                                    4.9.13    True        False         False      20h     
+node-tuning                                4.9.13    True        False         False      20h     
+openshift-apiserver                        4.9.13    True        False         False      4m50s   
+openshift-controller-manager               4.9.13    True        False         False      19h     
+openshift-samples                          4.9.13    True        False         False      5h13m   
+operator-lifecycle-manager                 4.9.13    True        False         False      20h     
+operator-lifecycle-manager-catalog         4.9.13    True        False         False      20h     
+operator-lifecycle-manager-packageserver   4.9.13    True        False         False      21m     
+service-ca                                 4.9.13    True        False         False      20h     
+storage                                    4.9.13    True        False         False      20h     
+NAME                                     STATUS   ROLES           AGE   VERSION           INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                                                       KERNEL-VERSION                         CONTAINER-RUNTIME
+cnfdf01.telco5gran.eng.rdu2.redhat.com   Ready    master,worker   20h   v1.22.3+e790d7f   10.8.34.11    <none>        Red Hat Enterprise Linux CoreOS 49.84.202201042103-0 (Ootpa)   4.18.0-305.30.1.rt7.102.el8_4.x86_64   cri-o://1.22.1-10.rhaos4.9.gitf1d2c6e.el8
+NAME     CONFIG                                             UPDATED   UPDATING   DEGRADED   MACHINECOUNT   READYMACHINECOUNT   UPDATEDMACHINECOUNT   DEGRADEDMACHINECOUNT   AGE
+master   rendered-master-7e701019cbef0e167ea489eaee946d2e   False     True       True       1              0                   0                     1                      20h
+worker   rendered-worker-88dcbbf6125946a463bdb8d286ed66b8   True      False      False      0              0                   0                     0                      20h
+##### Fri Jan 21 21:26:21 UTC 2022: Done
+##### Fri Jan 21 21:26:21 UTC 2022: Recovery complete

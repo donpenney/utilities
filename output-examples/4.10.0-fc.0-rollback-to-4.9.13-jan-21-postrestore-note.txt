@@ -1,0 +1,23 @@
+The 4.10.0-fc.0 rollback to 4.9.13 has a couple of challenges.
+
+Networking configuration changes (it seems) cause difficulty on the
+4.9 side, so a reboot is needed after restoring /etc. This is
+determined in the script by checking the list of files to be restored,
+and looking for NetworkManager files.
+
+In addition, the machine-config-daemon (MCD) has a problem reconciling
+the node, marking it degraded. For some reason, it complains about a
+missing rendered-master mc file from the 4.10 side, which does not
+exist after the restore. I was unable to find the reference to this mc
+file to explain how the MCD would even be aware of it. The "current"
+and "desired" configs are correct, referring to the 4.9
+rendered-master mc, but the MCD still degrades the node.
+
+In order to get past this missing mc issue and complete the restore, I
+had to do the same steps as described in the following:
+https://access.redhat.com/solutions/5044201
+
+Essentially, cloning the 4.9 rendered-master mc and updating its id to
+that of the "missing" mc. Once this is done, the MCD is able to finish
+reconciliation and the node is happy.
+
